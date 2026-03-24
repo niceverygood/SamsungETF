@@ -6,8 +6,11 @@ const app = express();
 
 app.use(express.json());
 
-// ===== OpenRouter API Key =====
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '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';
+// ===== OpenRouter API Key (환경 변수에서 로드) =====
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
+if (!OPENROUTER_API_KEY) {
+    console.warn('⚠️ OPENROUTER_API_KEY 환경 변수가 설정되지 않았습니다.');
+}
 
 // ===== FunETF 크롤링 데이터 로드 =====
 let FUNETF_DATA = null;
