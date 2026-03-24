@@ -111,8 +111,7 @@ function showTyping() {
     typingDiv.className = 'message bot-message';
     typingDiv.id = 'typingIndicator';
 
-    const currentModel = chatbot.getSelectedModel();
-    const modelLabel = currentModel === 'auto' ? '최적 모델 선택 중...' : `${currentModel} 분석 중...`;
+    const modelLabel = '🧠 Claude 분석 중... (실시간 데이터 수집 → AI 응답)';
 
     typingDiv.innerHTML = `
     <div class="message-avatar">
@@ -138,18 +137,7 @@ function removeTyping(el) {
     }
 }
 
-// ===== Model Toggle =====
-function setActiveModel(modelKey) {
-    chatbot.setModel(modelKey);
 
-    // Update toggle buttons
-    document.querySelectorAll('.model-toggle-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.model === modelKey) {
-            btn.classList.add('active');
-        }
-    });
-}
 
 function clearChat() {
     chatMessages.innerHTML = '';
@@ -166,9 +154,9 @@ function clearChat() {
           <p>안녕하세요! 👋 <strong>KODEX ETF AI 어시스턴트</strong>입니다.</p>
           <p>삼성자산운용이 운용하는 KODEX ETF에 대해 무엇이든 물어보세요. ETF 상품 정보, 시장 분석, 투자 전략까지 도와드리겠습니다.</p>
           <div class="tri-model-badges">
-            <div class="tri-badge claude">🧠 Claude 4.6 Opus <span>논리력 & 문장력</span></div>
-            <div class="tri-badge gpt">⚡ GPT-5.4 Pro <span>데이터 & 수치 분석</span></div>
-            <div class="tri-badge gemini">💎 Gemini 3.1 Pro <span>비교 & 종합 분석</span></div>
+            <div class="tri-badge claude">🧠 Claude 4.6 Opus <span>AI 엔진</span></div>
+            <div class="tri-badge gpt">📊 네이버증권 <span>실시간 시세</span></div>
+            <div class="tri-badge gemini">🌍 야후파이낸스 <span>글로벌 데이터</span></div>
           </div>
         </div>
         <div class="quick-actions">
@@ -207,7 +195,7 @@ async function checkAPIStatus() {
         const res = await fetch('/api/market-overview');
         const data = await res.json();
         if (data.success) {
-            statusEl.innerHTML = '<span class="status-dot"></span> Tri-Model AI · 실시간 데이터 활성';
+            statusEl.innerHTML = '<span class="status-dot"></span> Claude 4.6 Opus · 실시간 데이터 활성';
             statusEl.className = 'chat-header-status connected';
         } else {
             statusEl.innerHTML = '<span class="status-dot warn"></span> 일부 데이터 제한';
@@ -292,6 +280,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3 });
     chatObserver.observe(chatSection);
 
-    // Model toggle default
-    setActiveModel('auto');
+
 });
