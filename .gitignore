@@ -1,0 +1,12 @@
+node_modules/
+venv/
+.env
+.DS_Store
+__pycache__/
+*.pyc
+
+# FunETF crawled data (exclude large files, keep compact)
+funetf_output/captured_apis.json
+funetf_output/funetf_all_data.json
+funetf_output/downloads/
+funetf_output/*.xlsx

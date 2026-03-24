@@ -1,0 +1,1836 @@
+{
+  "kodex_etfs": [
+    {
+      "name": "KODEX 200타겟위클리커버드콜",
+      "nav": 34735.02,
+      "popularity": 4090,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500",
+      "nav": 78476.8,
+      "popularity": 3119,
+      "tags": "SPY,VOO,브이오오,스파이"
+    },
+    {
+      "name": "KODEX 금융고배당TOP10타겟위클리커버드콜",
+      "nav": 6152.42,
+      "popularity": 2954,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국우주항공",
+      "nav": 1424.46,
+      "popularity": 2683,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국배당커버드콜액티브",
+      "nav": 14195.0,
+      "popularity": 2505,
+      "tags": "DIVO,JEPI,디보,제피"
+    },
+    {
+      "name": "KODEX 미국나스닥100데일리커버드콜OTM",
+      "nav": 6421.62,
+      "popularity": 2074,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200",
+      "nav": 170506.8,
+      "popularity": 1858,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100",
+      "nav": 55661.82,
+      "popularity": 1753,
+      "tags": "AAPL,APPLE,QQQ,애플,큐큐큐"
+    },
+    {
+      "name": "KODEX AI전력핵심설비",
+      "nav": 18044.93,
+      "popularity": 1567,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200미국채혼합",
+      "nav": 14659.78,
+      "popularity": 1441,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI전력핵심인프라",
+      "nav": 13708.23,
+      "popularity": 1264,
+      "tags": null
+    },
+    {
+      "name": "KODEX 머니마켓액티브",
+      "nav": 74626.12,
+      "popularity": 1246,
+      "tags": null
+    },
+    {
+      "name": "KODEX AI반도체핵심장비",
+      "nav": 4462.36,
+      "popularity": 1198,
+      "tags": null
+    },
+    {
+      "name": "KODEX 한국부동산리츠인프라",
+      "nav": 5721.05,
+      "popularity": 1151,
+      "tags": null
+    },
+    {
+      "name": "KODEX 고배당주",
+      "nav": 3670.54,
+      "popularity": 1141,
+      "tags": null
+    },
+    {
+      "name": "KODEX 삼성전자채권혼합",
+      "nav": 10732.62,
+      "popularity": 1089,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥150",
+      "nav": 68686.39,
+      "popularity": 1030,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국배당다우존스",
+      "nav": 4591.26,
+      "popularity": 1022,
+      "tags": "SCHD,슈드"
+    },
+    {
+      "name": "KODEX 주주환원고배당주",
+      "nav": 2404.57,
+      "popularity": 978,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국머니마켓액티브",
+      "nav": 6160.78,
+      "popularity": 967,
+      "tags": null
+    },
+    {
+      "name": "KODEX 신재생에너지액티브",
+      "nav": 2586.43,
+      "popularity": 927,
+      "tags": null
+    },
+    {
+      "name": "KODEX AI반도체",
+      "nav": 20810.69,
+      "popularity": 920,
+      "tags": null
+    },
+    {
+      "name": "KODEX 원자력SMR",
+      "nav": 2962.85,
+      "popularity": 901,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국성장커버드콜액티브",
+      "nav": 3223.53,
+      "popularity": 861,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI테크TOP10타겟커버드콜",
+      "nav": 5345.96,
+      "popularity": 783,
+      "tags": null
+    },
+    {
+      "name": "KODEX 로봇액티브",
+      "nav": 9587.37,
+      "popularity": 781,
+      "tags": null
+    },
+    {
+      "name": "KODEX WTI원유선물(H)",
+      "nav": 1304.33,
+      "popularity": 781,
+      "tags": null
+    },
+    {
+      "name": "KODEX CD금리액티브(합성)",
+      "nav": 81186.06,
+      "popularity": 777,
+      "tags": null
+    },
+    {
+      "name": "KODEX 방산TOP10",
+      "nav": 4769.59,
+      "popularity": 766,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200TR",
+      "nav": 55260.76,
+      "popularity": 746,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500데일리커버드콜OTM",
+      "nav": 1467.94,
+      "popularity": 740,
+      "tags": null
+    },
+    {
+      "name": "KODEX 금융고배당TOP10",
+      "nav": 2273.05,
+      "popularity": 729,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국반도체",
+      "nav": 8135.54,
+      "popularity": 702,
+      "tags": "AMD,AVGO,BROADCOM,NVDA,NVIDIA,SOXL,SOXX,브로드컴,속스,쏙슬,에이엠디"
+    },
+    {
+      "name": "KODEX 미국배당다우존스타겟커버드콜",
+      "nav": 1535.65,
+      "popularity": 673,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500(H)",
+      "nav": 6909.54,
+      "popularity": 664,
+      "tags": null
+    },
+    {
+      "name": "KODEX TDF2050액티브",
+      "nav": 4847.23,
+      "popularity": 615,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국30년국채타겟커버드콜(합성 H)",
+      "nav": 8717.86,
+      "popularity": 591,
+      "tags": "TLT,티엘티"
+    },
+    {
+      "name": "KODEX 반도체",
+      "nav": 38758.49,
+      "popularity": 568,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코리아밸류업",
+      "nav": 6054.65,
+      "popularity": 550,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국30년국채액티브(H)",
+      "nav": 5810.85,
+      "popularity": 540,
+      "tags": "TMF,티엠에프"
+    },
+    {
+      "name": "KODEX iShares미국하이일드액티브",
+      "nav": 1093.1,
+      "popularity": 532,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국10년국채액티브(H)",
+      "nav": 1602.42,
+      "popularity": 527,
+      "tags": null
+    },
+    {
+      "name": "KODEX 건설",
+      "nav": 784.96,
+      "popularity": 523,
+      "tags": null
+    },
+    {
+      "name": "KODEX 국고채10년액티브",
+      "nav": 4857.99,
+      "popularity": 504,
+      "tags": null
+    },
+    {
+      "name": "KODEX TDF2040액티브",
+      "nav": 1219.2,
+      "popularity": 499,
+      "tags": null
+    },
+    {
+      "name": "KODEX 레버리지",
+      "nav": 50070.54,
+      "popularity": 485,
+      "tags": null
+    },
+    {
+      "name": "KODEX KOFR금리액티브(합성)",
+      "nav": 43609.15,
+      "popularity": 484,
+      "tags": null
+    },
+    {
+      "name": "KODEX 2차전지산업",
+      "nav": 17534.93,
+      "popularity": 484,
+      "tags": null
+    },
+    {
+      "name": "KODEX 은선물(H)",
+      "nav": 11966.62,
+      "popularity": 468,
+      "tags": null
+    },
+    {
+      "name": "KODEX 증권",
+      "nav": 9679.65,
+      "popularity": 456,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500에너지(합성)",
+      "nav": 518.86,
+      "popularity": 453,
+      "tags": null
+    },
+    {
+      "name": "KODEX 테슬라커버드콜채권혼합액티브",
+      "nav": 3376.13,
+      "popularity": 449,
+      "tags": null
+    },
+    {
+      "name": "KODEX 단기채권PLUS",
+      "nav": 20124.54,
+      "popularity": 446,
+      "tags": null
+    },
+    {
+      "name": "KODEX 반도체레버리지",
+      "nav": 11226.78,
+      "popularity": 446,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200선물인버스2X",
+      "nav": 15100.1,
+      "popularity": 443,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI반도체TOP3플러스",
+      "nav": 1111.33,
+      "popularity": 442,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥150레버리지",
+      "nav": 41824.89,
+      "popularity": 435,
+      "tags": null
+    },
+    {
+      "name": "KODEX 국고채3년",
+      "nav": 5253.58,
+      "popularity": 419,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스피100",
+      "nav": 6673.66,
+      "popularity": 413,
+      "tags": null
+    },
+    {
+      "name": "KODEX 골드선물(H)",
+      "nav": 4370.69,
+      "popularity": 408,
+      "tags": null
+    },
+    {
+      "name": "KODEX 대만테크고배당다우존스",
+      "nav": 152.32,
+      "popularity": 397,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국달러SOFR금리액티브(합성)",
+      "nav": 6620.54,
+      "popularity": 396,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국10년국채선물",
+      "nav": 1122.6,
+      "popularity": 384,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코리아배당성장채권혼합",
+      "nav": 1682.1,
+      "popularity": 379,
+      "tags": null
+    },
+    {
+      "name": "KODEX 종합채권(AA-이상)액티브",
+      "nav": 38860.0,
+      "popularity": 376,
+      "tags": null
+    },
+    {
+      "name": "KODEX 금액티브",
+      "nav": 2504.63,
+      "popularity": 373,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200액티브",
+      "nav": 9270.97,
+      "popularity": 362,
+      "tags": null
+    },
+    {
+      "name": "KODEX 배당가치",
+      "nav": 1599.97,
+      "popularity": 361,
+      "tags": null
+    },
+    {
+      "name": "KODEX 단기채권",
+      "nav": 7304.19,
+      "popularity": 358,
+      "tags": null
+    },
+    {
+      "name": "KODEX TDF2060액티브",
+      "nav": 1136.58,
+      "popularity": 346,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI테크TOP10",
+      "nav": 2686.37,
+      "popularity": 338,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코리아배당성장",
+      "nav": 946.8,
+      "popularity": 323,
+      "tags": null
+    },
+    {
+      "name": "KODEX 인도Nifty50",
+      "nav": 3854.17,
+      "popularity": 320,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100(H)",
+      "nav": 4499.96,
+      "popularity": 316,
+      "tags": null
+    },
+    {
+      "name": "KODEX 바이오",
+      "nav": 2746.35,
+      "popularity": 310,
+      "tags": null
+    },
+    {
+      "name": "KODEX 조선TOP10",
+      "nav": 1253.71,
+      "popularity": 308,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국달러선물",
+      "nav": 816.27,
+      "popularity": 308,
+      "tags": null
+    },
+    {
+      "name": "KODEX 일본부동산리츠(H)",
+      "nav": 562.04,
+      "popularity": 307,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국부동산리츠(H)",
+      "nav": 320.15,
+      "popularity": 299,
+      "tags": null
+    },
+    {
+      "name": "KODEX 보험",
+      "nav": 505.76,
+      "popularity": 295,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500배당귀족커버드콜(합성 H)",
+      "nav": 356.23,
+      "popularity": 284,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500금융",
+      "nav": 427.89,
+      "popularity": 282,
+      "tags": null
+    },
+    {
+      "name": "KODEX CD1년금리플러스액티브(합성)",
+      "nav": 28110.46,
+      "popularity": 278,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200IT TR",
+      "nav": 1086.32,
+      "popularity": 274,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500버퍼3월액티브",
+      "nav": 778.63,
+      "popularity": 265,
+      "tags": null
+    },
+    {
+      "name": "KODEX 인버스",
+      "nav": 10890.17,
+      "popularity": 255,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥AI테크액티브",
+      "nav": 1060.6,
+      "popularity": 249,
+      "tags": null
+    },
+    {
+      "name": "KODEX WTI원유선물인버스(H)",
+      "nav": 1399.25,
+      "popularity": 246,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국원자력SMR",
+      "nav": 829.3,
+      "popularity": 245,
+      "tags": null
+    },
+    {
+      "name": "KODEX 은행",
+      "nav": 4584.71,
+      "popularity": 238,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500선물(H)",
+      "nav": 1400.65,
+      "popularity": 236,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200 중소형",
+      "nav": 235.49,
+      "popularity": 231,
+      "tags": null
+    },
+    {
+      "name": "KODEX 에너지화학",
+      "nav": 317.54,
+      "popularity": 230,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나휴머노이드로봇",
+      "nav": 2187.89,
+      "popularity": 229,
+      "tags": null
+    },
+    {
+      "name": "KODEX 삼성그룹",
+      "nav": 24141.29,
+      "popularity": 228,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국서학개미",
+      "nav": 2593.4,
+      "popularity": 225,
+      "tags": "COUPANG,CPNG,IONQ,MICROSTRATEGY,MSTR,PALANTIR,PLTR,마이크로스트레티지,아이온큐,쿠팡,팔란티어"
+    },
+    {
+      "name": "KODEX 국고채30년액티브",
+      "nav": 3572.14,
+      "popularity": 209,
+      "tags": null
+    },
+    {
+      "name": "KODEX 자동차",
+      "nav": 5238.45,
+      "popularity": 208,
+      "tags": null
+    },
+    {
+      "name": "KODEX TDF2030액티브",
+      "nav": 799.79,
+      "popularity": 206,
+      "tags": null
+    },
+    {
+      "name": "KODEX 2차전지산업레버리지",
+      "nav": 6199.71,
+      "popularity": 204,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500액티브",
+      "nav": 564.58,
+      "popularity": 203,
+      "tags": null
+    },
+    {
+      "name": "KODEX 26-12 금융채(AA-이상)액티브",
+      "nav": 19301.06,
+      "popularity": 201,
+      "tags": null
+    },
+    {
+      "name": "KODEX 방산TOP10레버리지",
+      "nav": 686.7,
+      "popularity": 200,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500산업재(합성)",
+      "nav": 482.3,
+      "popularity": 200,
+      "tags": null
+    },
+    {
+      "name": "KODEX TRF7030",
+      "nav": 829.35,
+      "popularity": 199,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200동일가중",
+      "nav": 669.2,
+      "popularity": 198,
+      "tags": null
+    },
+    {
+      "name": "KODEX iShares미국인플레이션국채액티브",
+      "nav": 187.93,
+      "popularity": 198,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500헬스케어",
+      "nav": 620.16,
+      "popularity": 196,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200가치저변동",
+      "nav": 254.71,
+      "popularity": 194,
+      "tags": null
+    },
+    {
+      "name": "KODEX TRF3070",
+      "nav": 2540.01,
+      "popularity": 188,
+      "tags": null
+    },
+    {
+      "name": "KODEX 가치주",
+      "nav": 219.33,
+      "popularity": 184,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나AI테크액티브",
+      "nav": 425.09,
+      "popularity": 177,
+      "tags": "0700,1810,TENCENT,XIAOMI,샤오미,텐센트"
+    },
+    {
+      "name": "KODEX 구리선물(H)",
+      "nav": 453.49,
+      "popularity": 175,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스피",
+      "nav": 8225.45,
+      "popularity": 167,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국드론UAM TOP10",
+      "nav": 319.15,
+      "popularity": 165,
+      "tags": null
+    },
+    {
+      "name": "KODEX Top5PlusTR",
+      "nav": 13779.36,
+      "popularity": 164,
+      "tags": null
+    },
+    {
+      "name": "KODEX 국채선물10년",
+      "nav": 406.86,
+      "popularity": 164,
+      "tags": null
+    },
+    {
+      "name": "KODEX 아시아AI반도체exChina액티브",
+      "nav": 220.28,
+      "popularity": 162,
+      "tags": null
+    },
+    {
+      "name": "KODEX iShares미국투자등급회사채액티브",
+      "nav": 364.35,
+      "popularity": 160,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI소프트웨어TOP10",
+      "nav": 606.8,
+      "popularity": 157,
+      "tags": null
+    },
+    {
+      "name": "KODEX 골드선물인버스(H)",
+      "nav": 34.53,
+      "popularity": 157,
+      "tags": null
+    },
+    {
+      "name": "KODEX 26-12 회사채(AA-이상)액티브",
+      "nav": 5124.59,
+      "popularity": 156,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국휴머노이드로봇",
+      "nav": 2992.03,
+      "popularity": 156,
+      "tags": null
+    },
+    {
+      "name": "KODEX 3대농산물선물(H)",
+      "nav": 288.79,
+      "popularity": 152,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500유틸리티",
+      "nav": 156.66,
+      "popularity": 152,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥150선물인버스",
+      "nav": 1888.34,
+      "popularity": 146,
+      "tags": null
+    },
+    {
+      "name": "KODEX 2차전지핵심소재10",
+      "nav": 2214.81,
+      "popularity": 145,
+      "tags": null
+    },
+    {
+      "name": "KODEX MSCI선진국",
+      "nav": 4802.93,
+      "popularity": 144,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나CSI300",
+      "nav": 2809.98,
+      "popularity": 144,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100선물인버스(H)",
+      "nav": 204.83,
+      "popularity": 141,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국종합채권ESG액티브(H)",
+      "nav": 3239.64,
+      "popularity": 140,
+      "tags": null
+    },
+    {
+      "name": "KODEX 친환경조선해운액티브",
+      "nav": 656.36,
+      "popularity": 140,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500필수소비재",
+      "nav": 175.71,
+      "popularity": 140,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나AI반도체TOP10",
+      "nav": 296.45,
+      "popularity": 139,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200롱코스닥150숏선물",
+      "nav": 313.72,
+      "popularity": 133,
+      "tags": null
+    },
+    {
+      "name": "KODEX 28-12 회사채(AA-이상)액티브",
+      "nav": 1628.95,
+      "popularity": 132,
+      "tags": null
+    },
+    {
+      "name": "KODEX KRX300",
+      "nav": 631.37,
+      "popularity": 126,
+      "tags": null
+    },
+    {
+      "name": "KODEX 단기변동금리부채권액티브",
+      "nav": 3270.35,
+      "popularity": 122,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200ESG",
+      "nav": 863.86,
+      "popularity": 121,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국빅테크10(H)",
+      "nav": 5966.3,
+      "popularity": 119,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스피대형주",
+      "nav": 585.31,
+      "popularity": 115,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100선물(H)",
+      "nav": 1035.79,
+      "popularity": 114,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국테크TOP3플러스",
+      "nav": 297.87,
+      "popularity": 113,
+      "tags": "MICROSOFT,MSFT,마이크로소프트"
+    },
+    {
+      "name": "KODEX 차이나항셍테크",
+      "nav": 1608.06,
+      "popularity": 112,
+      "tags": "ALIBABA,BABA,알리바바"
+    },
+    {
+      "name": "KODEX 헬스케어",
+      "nav": 901.13,
+      "popularity": 112,
+      "tags": null
+    },
+    {
+      "name": "KODEX Top10동일가중",
+      "nav": 569.47,
+      "popularity": 112,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥150롱코스피200숏선물",
+      "nav": 289.75,
+      "popularity": 112,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500테크놀로지",
+      "nav": 647.28,
+      "popularity": 111,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국30년국채울트라선물(H)",
+      "nav": 1867.28,
+      "popularity": 109,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500변동성확대시커버드콜",
+      "nav": 850.1,
+      "popularity": 109,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국금융테크액티브",
+      "nav": 175.0,
+      "popularity": 108,
+      "tags": null
+    },
+    {
+      "name": "KODEX 일본TOPIX100",
+      "nav": 594.38,
+      "popularity": 107,
+      "tags": null
+    },
+    {
+      "name": "KODEX 필수소비재",
+      "nav": 144.47,
+      "popularity": 106,
+      "tags": null
+    },
+    {
+      "name": "KODEX TRF5050",
+      "nav": 982.56,
+      "popularity": 105,
+      "tags": null
+    },
+    {
+      "name": "KODEX 한국대만IT프리미어",
+      "nav": 612.47,
+      "popularity": 104,
+      "tags": "TSM,TSMC,티에스엠씨"
+    },
+    {
+      "name": "KODEX MSCI Korea",
+      "nav": 304.6,
+      "popularity": 101,
+      "tags": null
+    },
+    {
+      "name": "KODEX 성장주",
+      "nav": 1542.9,
+      "popularity": 100,
+      "tags": null
+    },
+    {
+      "name": "KODEX 우량주",
+      "nav": 342.34,
+      "popularity": 100,
+      "tags": null
+    },
+    {
+      "name": "KODEX 장기종합채권(AA-이상)액티브",
+      "nav": 3149.27,
+      "popularity": 99,
+      "tags": null
+    },
+    {
+      "name": "KODEX MSCI Korea TR",
+      "nav": 22038.69,
+      "popularity": 98,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코리아소버린AI",
+      "nav": 976.53,
+      "popularity": 98,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국ETF산업Top10 Indxx",
+      "nav": 133.08,
+      "popularity": 96,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국러셀2000(H)",
+      "nav": 307.4,
+      "popularity": 94,
+      "tags": null
+    },
+    {
+      "name": "KODEX 27-12 회사채(AA-이상)액티브",
+      "nav": 4035.96,
+      "popularity": 93,
+      "tags": null
+    },
+    {
+      "name": "KODEX 최소변동성",
+      "nav": 113.44,
+      "popularity": 91,
+      "tags": null
+    },
+    {
+      "name": "KODEX 글로벌로봇(합성)",
+      "nav": 425.64,
+      "popularity": 90,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국달러선물인버스2X",
+      "nav": 2347.7,
+      "popularity": 88,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국달러선물인버스",
+      "nav": 681.13,
+      "popularity": 88,
+      "tags": null
+    },
+    {
+      "name": "KODEX K콘텐츠",
+      "nav": 428.07,
+      "popularity": 88,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥글로벌",
+      "nav": 314.27,
+      "popularity": 88,
+      "tags": null
+    },
+    {
+      "name": "KODEX 혁신기술테마액티브",
+      "nav": 179.11,
+      "popularity": 86,
+      "tags": null
+    },
+    {
+      "name": "KODEX 운송",
+      "nav": 123.6,
+      "popularity": 84,
+      "tags": null
+    },
+    {
+      "name": "KODEX 한중반도체(합성)",
+      "nav": 225.76,
+      "popularity": 80,
+      "tags": null
+    },
+    {
+      "name": "KODEX MSCI EM선물(H)",
+      "nav": 72.24,
+      "popularity": 80,
+      "tags": null
+    },
+    {
+      "name": "KODEX IT",
+      "nav": 522.18,
+      "popularity": 77,
+      "tags": null
+    },
+    {
+      "name": "KODEX KTOP30",
+      "nav": 174.84,
+      "popularity": 76,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나심천ChiNext(합성)",
+      "nav": 498.95,
+      "popularity": 73,
+      "tags": null
+    },
+    {
+      "name": "KODEX S&P글로벌인프라(합성)",
+      "nav": 265.84,
+      "popularity": 73,
+      "tags": null
+    },
+    {
+      "name": "KODEX 유럽명품TOP10 STOXX",
+      "nav": 112.03,
+      "popularity": 73,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국달러선물레버리지",
+      "nav": 373.51,
+      "popularity": 72,
+      "tags": null
+    },
+    {
+      "name": "KODEX 테슬라밸류체인FactSet",
+      "nav": 293.64,
+      "popularity": 71,
+      "tags": "TESLA,TSLA,TSLL,테슬라,테슬리"
+    },
+    {
+      "name": "KODEX ESG종합채권(A-이상)액티브",
+      "nav": 3146.18,
+      "popularity": 70,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국클린에너지나스닥",
+      "nav": 137.5,
+      "popularity": 70,
+      "tags": null
+    },
+    {
+      "name": "KODEX 자율주행액티브",
+      "nav": 300.05,
+      "popularity": 67,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500버퍼6월액티브",
+      "nav": 593.85,
+      "popularity": 66,
+      "tags": null
+    },
+    {
+      "name": "KODEX 국채선물10년인버스",
+      "nav": 137.06,
+      "popularity": 65,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100레버리지(합성 H)",
+      "nav": 1828.21,
+      "popularity": 62,
+      "tags": "TQQQ,티큐큐큐"
+    },
+    {
+      "name": "KODEX 철강",
+      "nav": 246.17,
+      "popularity": 62,
+      "tags": null
+    },
+    {
+      "name": "KODEX 글로벌비만치료제TOP2 Plus",
+      "nav": 425.73,
+      "popularity": 60,
+      "tags": null
+    },
+    {
+      "name": "KODEX 인도타타그룹",
+      "nav": 288.64,
+      "popularity": 58,
+      "tags": null
+    },
+    {
+      "name": "KODEX 53-09 국고채액티브",
+      "nav": 135.59,
+      "popularity": 58,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코리아혁신성장액티브",
+      "nav": 118.05,
+      "popularity": 57,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나2차전지MSCI(합성)",
+      "nav": 400.37,
+      "popularity": 56,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나H",
+      "nav": 428.04,
+      "popularity": 55,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국30년국채울트라선물인버스(H)",
+      "nav": 71.57,
+      "popularity": 55,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P바이오(합성)",
+      "nav": 204.38,
+      "popularity": 54,
+      "tags": null
+    },
+    {
+      "name": "KODEX 아시아달러채권ESG플러스액티브",
+      "nav": 416.76,
+      "popularity": 53,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나A50",
+      "nav": 217.23,
+      "popularity": 53,
+      "tags": null
+    },
+    {
+      "name": "KODEX 33-06 국고채액티브",
+      "nav": 211.3,
+      "popularity": 53,
+      "tags": null
+    },
+    {
+      "name": "KODEX 경기소비재",
+      "nav": 94.82,
+      "popularity": 53,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나테크TOP10",
+      "nav": 322.3,
+      "popularity": 52,
+      "tags": null
+    },
+    {
+      "name": "KODEX 삼성그룹밸류",
+      "nav": 2410.1,
+      "popularity": 51,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스피TR",
+      "nav": 1032.48,
+      "popularity": 50,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500커뮤니케이션",
+      "nav": 126.93,
+      "popularity": 48,
+      "tags": "META,메타"
+    },
+    {
+      "name": "KODEX 200exTOP",
+      "nav": 164.26,
+      "popularity": 47,
+      "tags": null
+    },
+    {
+      "name": "KODEX KRX300레버리지",
+      "nav": 584.56,
+      "popularity": 45,
+      "tags": null
+    },
+    {
+      "name": "KODEX 게임산업",
+      "nav": 321.29,
+      "popularity": 45,
+      "tags": null
+    },
+    {
+      "name": "KODEX 인도Nifty미드캡100",
+      "nav": 148.74,
+      "popularity": 45,
+      "tags": null
+    },
+    {
+      "name": "KODEX 웹툰&드라마",
+      "nav": 111.78,
+      "popularity": 45,
+      "tags": null
+    },
+    {
+      "name": "KODEX 기계장비",
+      "nav": 185.31,
+      "popularity": 44,
+      "tags": null
+    },
+    {
+      "name": "KODEX 메타버스액티브",
+      "nav": 729.98,
+      "popularity": 43,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500경기소비재",
+      "nav": 132.24,
+      "popularity": 41,
+      "tags": "AMAZON,AMZN,아마존닷컴"
+    },
+    {
+      "name": "KODEX 차이나과창판STAR50(합성)",
+      "nav": 244.16,
+      "popularity": 40,
+      "tags": null
+    },
+    {
+      "name": "KODEX 콩선물(H)",
+      "nav": 59.41,
+      "popularity": 40,
+      "tags": null
+    },
+    {
+      "name": "KODEX 유럽탄소배출권선물ICE(H)",
+      "nav": 163.92,
+      "popularity": 38,
+      "tags": null
+    },
+    {
+      "name": "KODEX 밸류Plus",
+      "nav": 70.56,
+      "popularity": 37,
+      "tags": null
+    },
+    {
+      "name": "KODEX 모멘텀Plus",
+      "nav": 132.27,
+      "popularity": 34,
+      "tags": null
+    },
+    {
+      "name": "KODEX 인도Nifty50레버리지(합성)",
+      "nav": 176.35,
+      "popularity": 31,
+      "tags": null
+    },
+    {
+      "name": "KODEX 국채선물3년인버스",
+      "nav": 227.33,
+      "popularity": 30,
+      "tags": null
+    },
+    {
+      "name": "KODEX 금융채1~2년(AA-이상)PLUS액티브",
+      "nav": 1373.74,
+      "popularity": 26,
+      "tags": null
+    },
+    {
+      "name": "KODEX 탄소효율그린뉴딜",
+      "nav": 462.52,
+      "popularity": 26,
+      "tags": null
+    },
+    {
+      "name": "KODEX 멀티에셋하이인컴(H)",
+      "nav": 51.65,
+      "popularity": 26,
+      "tags": null
+    },
+    {
+      "name": "KODEX 한중전기차(합성)",
+      "nav": 87.67,
+      "popularity": 23,
+      "tags": null
+    },
+    {
+      "name": "KODEX 퀄리티Plus",
+      "nav": 48.15,
+      "popularity": 23,
+      "tags": null
+    },
+    {
+      "name": "KODEX 기후변화솔루션",
+      "nav": 186.24,
+      "popularity": 20,
+      "tags": null
+    },
+    {
+      "name": "KODEX K-뉴딜디지털플러스",
+      "nav": 72.11,
+      "popularity": 19,
+      "tags": null
+    },
+    {
+      "name": "KODEX MSCI KOREA ESG유니버설",
+      "nav": 166.53,
+      "popularity": 18,
+      "tags": null
+    },
+    {
+      "name": "KODEX 멀티팩터",
+      "nav": 162.12,
+      "popularity": 18,
+      "tags": null
+    },
+    {
+      "name": "KODEX 모멘텀주",
+      "nav": 251.37,
+      "popularity": 16,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국스마트모빌리티S&P",
+      "nav": 84.06,
+      "popularity": 16,
+      "tags": null
+    },
+    {
+      "name": "KODEX 차이나H레버리지(H)",
+      "nav": 334.76,
+      "popularity": 1,
+      "tags": null
+    }
+  ],
+  "all_etf_count": 1079,
+  "top_50_all": [
+    {
+      "name": "KODEX 200타겟위클리커버드콜",
+      "nav": 34735.02,
+      "popularity": 4090,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국S&P500",
+      "nav": 78476.8,
+      "popularity": 3119,
+      "tags": "SPY,VOO,브이오오,스파이"
+    },
+    {
+      "name": "KODEX 금융고배당TOP10타겟위클리커버드콜",
+      "nav": 6152.42,
+      "popularity": 2954,
+      "tags": null
+    },
+    {
+      "name": "TIGER 배당커버드콜액티브",
+      "nav": 7892.55,
+      "popularity": 2778,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국우주항공",
+      "nav": 1424.46,
+      "popularity": 2683,
+      "tags": null
+    },
+    {
+      "name": "TIGER 반도체TOP10",
+      "nav": 81182.28,
+      "popularity": 2577,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국배당커버드콜액티브",
+      "nav": 14195.0,
+      "popularity": 2505,
+      "tags": "DIVO,JEPI,디보,제피"
+    },
+    {
+      "name": "TIGER 미국배당다우존스",
+      "nav": 31081.04,
+      "popularity": 2447,
+      "tags": null
+    },
+    {
+      "name": "PLUS 고배당주",
+      "nav": 24459.79,
+      "popularity": 2356,
+      "tags": null
+    },
+    {
+      "name": "KoAct 코스닥액티브",
+      "nav": 9867.6,
+      "popularity": 2155,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100데일리커버드콜OTM",
+      "nav": 6421.62,
+      "popularity": 2074,
+      "tags": null
+    },
+    {
+      "name": "TIGER 코리아원자력",
+      "nav": 7196.46,
+      "popularity": 1885,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200",
+      "nav": 170506.8,
+      "popularity": 1858,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국나스닥100",
+      "nav": 55661.82,
+      "popularity": 1753,
+      "tags": "AAPL,APPLE,QQQ,애플,큐큐큐"
+    },
+    {
+      "name": "TIGER 리츠부동산인프라",
+      "nav": 14466.7,
+      "popularity": 1571,
+      "tags": null
+    },
+    {
+      "name": "KODEX AI전력핵심설비",
+      "nav": 18044.93,
+      "popularity": 1567,
+      "tags": null
+    },
+    {
+      "name": "KODEX 200미국채혼합",
+      "nav": 14659.78,
+      "popularity": 1441,
+      "tags": null
+    },
+    {
+      "name": "TIME Korea플러스배당액티브",
+      "nav": 6505.77,
+      "popularity": 1354,
+      "tags": null
+    },
+    {
+      "name": "TIGER 미국나스닥100타겟데일리커버드콜",
+      "nav": 11825.73,
+      "popularity": 1333,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국AI전력핵심인프라",
+      "nav": 13708.23,
+      "popularity": 1264,
+      "tags": null
+    },
+    {
+      "name": "TIME 코스닥액티브",
+      "nav": 5150.11,
+      "popularity": 1250,
+      "tags": null
+    },
+    {
+      "name": "KODEX 머니마켓액티브",
+      "nav": 74626.12,
+      "popularity": 1246,
+      "tags": null
+    },
+    {
+      "name": "RISE 삼성전자SK하이닉스채권혼합50",
+      "nav": 6147.94,
+      "popularity": 1234,
+      "tags": null
+    },
+    {
+      "name": "KODEX AI반도체핵심장비",
+      "nav": 4462.36,
+      "popularity": 1198,
+      "tags": null
+    },
+    {
+      "name": "TIGER 미국나스닥100",
+      "nav": 79121.28,
+      "popularity": 1180,
+      "tags": null
+    },
+    {
+      "name": "SOL 코리아고배당",
+      "nav": 5775.31,
+      "popularity": 1167,
+      "tags": null
+    },
+    {
+      "name": "PLUS 고배당주위클리커버드콜",
+      "nav": 2330.75,
+      "popularity": 1156,
+      "tags": null
+    },
+    {
+      "name": "KODEX 한국부동산리츠인프라",
+      "nav": 5721.05,
+      "popularity": 1151,
+      "tags": null
+    },
+    {
+      "name": "KODEX 고배당주",
+      "nav": 3670.54,
+      "popularity": 1141,
+      "tags": null
+    },
+    {
+      "name": "TIME 미국나스닥100액티브",
+      "nav": 10574.34,
+      "popularity": 1112,
+      "tags": null
+    },
+    {
+      "name": "TIGER K방산&우주",
+      "nav": 7831.42,
+      "popularity": 1110,
+      "tags": null
+    },
+    {
+      "name": "KODEX 삼성전자채권혼합",
+      "nav": 10732.62,
+      "popularity": 1089,
+      "tags": null
+    },
+    {
+      "name": "ACE AI반도체TOP3+",
+      "nav": 4854.1,
+      "popularity": 1079,
+      "tags": null
+    },
+    {
+      "name": "TIGER 코리아배당다우존스",
+      "nav": 4777.61,
+      "popularity": 1077,
+      "tags": null
+    },
+    {
+      "name": "TIGER 미국초단기(3개월이하)국채",
+      "nav": 3616.81,
+      "popularity": 1072,
+      "tags": null
+    },
+    {
+      "name": "TIGER 미국S&P500",
+      "nav": 147005.18,
+      "popularity": 1050,
+      "tags": null
+    },
+    {
+      "name": "KODEX 코스닥150",
+      "nav": 68686.39,
+      "popularity": 1030,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국배당다우존스",
+      "nav": 4591.26,
+      "popularity": 1022,
+      "tags": "SCHD,슈드"
+    },
+    {
+      "name": "KODEX 주주환원고배당주",
+      "nav": 2404.57,
+      "popularity": 978,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국머니마켓액티브",
+      "nav": 6160.78,
+      "popularity": 967,
+      "tags": null
+    },
+    {
+      "name": "PLUS 고배당주채권혼합",
+      "nav": 7202.78,
+      "popularity": 938,
+      "tags": null
+    },
+    {
+      "name": "KODEX 신재생에너지액티브",
+      "nav": 2586.43,
+      "popularity": 927,
+      "tags": null
+    },
+    {
+      "name": "KODEX AI반도체",
+      "nav": 20810.69,
+      "popularity": 920,
+      "tags": null
+    },
+    {
+      "name": "TIGER 미국배당다우존스타겟데일리커버드콜",
+      "nav": 1921.46,
+      "popularity": 909,
+      "tags": null
+    },
+    {
+      "name": "KODEX 원자력SMR",
+      "nav": 2962.85,
+      "popularity": 901,
+      "tags": null
+    },
+    {
+      "name": "1Q 미국우주항공테크",
+      "nav": 5600.06,
+      "popularity": 893,
+      "tags": null
+    },
+    {
+      "name": "ACE KRX금현물",
+      "nav": 44910.28,
+      "popularity": 890,
+      "tags": null
+    },
+    {
+      "name": "ACE 미국배당다우존스",
+      "nav": 7861.65,
+      "popularity": 880,
+      "tags": null
+    },
+    {
+      "name": "TIGER 은행고배당플러스TOP10",
+      "nav": 9438.48,
+      "popularity": 876,
+      "tags": null
+    },
+    {
+      "name": "KODEX 미국성장커버드콜액티브",
+      "nav": 3223.53,
+      "popularity": 861,
+      "tags": null
+    }
+  ],
+  "etf_details": {
+    "KR7069500007": {
+      "isin": "KR7069500007",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 한국종합주가지수200(이하 &ldquo;추적대상지수&rdquo;라 한다)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 추적대상지수 : KOSPI200 x 100%다. 다만, 집합투자업자는 이 추적대상지수가 추적대상지수 산출기관의 상황, 지수에 포함된 종목의 매매 가능성 및 기타 운용에 영향을 줄 수 있는 운용환경 등의 변화로 인해 추적대상지수로서 적합하지 않다고 판단되거나 추적대상지수로서 적합하지 않는 상황이 발생할 것으로 판단되는 경우 관련된 다른 지수로 변경할 수 있습니다.",
+            "discription4": "(1) 투자 전략1) KOSPI200지수의 성과를 추적하는 투자목적을 달성하기 위하여 삼성KODEX200증권상장지수투자신탁[주식]의 집합투자업자인 삼성자산운용㈜는 KOSPI200지수 구성종목 중에서 부도리스크를 감안한 종목으로 투자가능대상 종목을 구성하고, 당해 투자가능대상 종목 중에서 추적오차를 감안하여 종목군을 표본추출(Sampling)합니다. 삼성자산운용(주)는 이렇게 표본추출된 종목군과 KOSPI200 지수의 파생상품인 주가지수선물 등으로 신탁재산을 운용하는 것을 그 운용방침으로 합니다.2) KOSPI200 지수의 개요- KOSPI200 지수는 증권시장의 전체 상장종목에서 200종목만으로 산출하는 주가지수로서 시장대표성, 업종대표성 및 유동성을 감안하여 편입종목을 결정하며, KSOPI200 지수 산출의 기준일은 1990년 1월30일이며, 기준지수는 100pt입니다.(2) 포트폴리오 구성방안&middot; 이 투자신탁의 포트폴리오는 추적대상 지수를 구성하는 종목 대부분에 투자함을 원칙으로 하되, 시가총액기준 하위종목의 비율이 지나치게 하락하거나 유동성에 문제가 있을 경우에는 해당 종목에 대한 투자 비율을 조절하거나 투자하지 아니할 수도 있습니다.또한 추적대상 지수의 구성종목에 변경이 있을 경우에는 추적대상 지수에 포함되지 않은 종목에 투자할 수도 있습니다.(3) 포트폴리오 조정1) 이 투자신탁은 그 투자목적을 달성하기 위하여 다음과 같은 다양한 주식시장 환경변화 또는 투자대상 종목의 환경변화에 대응하여 수시 또는 정기적으로 신탁재산 내 투자종목을 교체하거나 비율을 조정하게 됩니다.① 추적대상 지수 구성종목의 정기적 또는 수시 교체시② 추적대상 지수 구성종목의 유상증자 또는 CB전환 등으로 인한 시가비중 변동시③ 투자신탁재산에 포함되어 있는 구성종목의 부도 발생시④ 신탁재산에 포함되어 있는 구성종목의 합병, 분할 등의 사유 발생시2) 집합투자업자는 위와 같은 지속적인 포트폴리오 조정을 통하여 이 투자신탁의 투자 수익률을 추적대상 지수의 수익률과 동일하거나 유사한 수익률이 되도록 투자신탁재산을 운용할 것입니다.(4) 추적오차 발생 요인&middot; 이 투자신탁은 다음과 같은 다양한 이유로 인하여 추적대상지수의 수익률과 이 투자신탁 수익률 간의 괴리(추적오차)가 발생할 수 있습니다. 이 경우 집합투자업자는 동 추적오차를 최소화하기 위하여 투자신탁 관련 비용의 최소화, 추적오차를 감안한 포트폴리오납입자산 작성 등의 다양한 보완 방안을 실행할 것이지만, 그럼에도 불구하고 최소한의 추적오차가 발생할 가능성이 있음을 유의하셔야 합니다.※ 비교 지수: [KOSPI200]ⅹ100%"
+          }
+        ]
+      }
+    },
+    "KR7069660009": {
+      "isin": "KR7069660009",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "- 이 투자신탁은 집합투자규약 제17조에서 정의된 주식등을 법 시행령 제94조제2항제4호에서 규정하는 주된 투자대상자산으로 하고 있습니다.- 이 투자신탁은 추적대상지수를 한국거래소가 산출하여 발표하는 KOSPI200 지수 (&quot;추적대상지수&quot;)로 하여, 추적대상지수인 KOSPI200지수에 편입된 주식 등에 중장기 투자하여 비교지수와 유사한 투자수익률을 추구하는 상장지수투자신탁입니다.* 비교지수: KOSPI200지수 &times; 100%",
+            "discription4": "가. 투자전략① 주식에 대한 투자전략- 법 제4조제4항의 규정에 의한 지분증권인 주권, 신주인수권이 표시된 것, 법률에 의하여 직접설립된 법인이 발행한 출자증권(법 제9조제15항제3호의 주권상장법인이 발행한 것에 한합니다)에투자신탁 자산총액의 60%이상을 투자합니다.② 파생상품에 대한 투자전략- 주식관련 파생상품 거래에 따른 위험평가액은 투자신탁 자산총액의 10%미만이 되도록 투자합니다.이 투자신탁은 거래소에 상장되어 거래되는 주가지수파생상품을 주로 편입합니다.- 주가지수파생상품은 작은 증거금만으로 인덱스 추종이 가능한 레버리지 상품으로 개별주식으로구성된 인덱스바스켓 매매에 비하여 거래가 간편하고 가용 현금이 증가하는 장점이 있으나,주가지수파생상품 자체의 수급 등에 따라 인덱스와 일시적인 괴리가 발생할 수 있습니다. 또한,주가지수파생상품은 만기가 존재하는 상품이므로 롤오버(Roll-over)에 따른 비용이 발생하며,개별주식과 마찬가지로 시장의 등락에 따른 위험에 노출됩니다.③ 이 투자신탁은 KOSPI200 지수와 유사한 수익과 위험을 갖는 것을 목적으로 하는 인덱스펀드로,KOSPI200 지수 등락에 따른 손익을 추구합니다. 또한, 차익거래, 보유주식의 대여 등의 다양한전략을 통하여 지수대비 초과수익을 추구합니다. 그러나 주식시장의 변동 등으로 인하여 이투자신탁의 투자목적이 반드시 달성된다는 보장은 없습니다.④ 이 투자신탁은 인덱스 추종을 위하여 편입종목의 기업분할, 합병 등과 같은 인덱스 구성비중의 변경발생시 포트폴리오 변경을 위한 매매가 빈번히 발생할 수 있으므로 매매비용이 증가할 수 있습니다.매매비용의 증가는 투자신탁의 비용의 증가를 야기할 수 있습니다.- 비교지수:&lsquo;KOSPI200 지수 X 100%"
+          }
+        ]
+      }
+    },
+    "KR7091160002": {
+      "isin": "KR7091160002",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 KRX Semicon 지수(이하 &ldquo;추적대상지수&rdquo;라 한다)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 추적대상지수 : KRX Semicon 지수다. 다만, 집합투자업자는 이 추적대상지수가 추적대상지수 산출기관의 상황, 지수에 포함된 종목의 매매가능성 및 기타 운용에 영향을 줄 수 있는 운용환경 등의 변화로 인해 추적대상지수로서 적합하지 않다고 판단되거나 추적대상지수로서 적합하지 않는 상황이 발생할 것으로 판단되는 경우 관련된 다른 지수로 변경할 수 있습니다.",
+            "discription4": "(1) 이 투자신탁은 그 신탁재산을 추적대상 지수의 구성종목을 거의 그대로 투자하는 완전복제(full replication)에 의하여 운용하는 것을 원칙으로 합니다. 그러나, 투자대상 주식의 합병, 분할 등 불가피할 사유가 발생하는 경우에는 완전복제가 아닌 부분복제(Sampling)에 의한 방법으로 운용할수도 있습니다.※ 비교 지수: [KRX Semicon 지수]ⅹ100%"
+          }
+        ]
+      }
+    },
+    "KR7091170001": {
+      "isin": "KR7091170001",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 KRX Banks 지수(이하 &ldquo;추적대상지수&rdquo;라 한다)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 추적대상지수 : KRX Banks 지수",
+            "discription4": "(1) 이 투자신탁은 그 신탁재산을 추적대상 지수의 구성종목을 거의 그대로 투자하는 완전복제(full replication)에 의하여 운용하는 것을 원칙으로 합니다. 그러나, 투자대상 주식의 합병, 분할 등 불가피할 사유가 발생하는 경우에는 완전복제가 아닌 부분복제(Sampling)에 의한 방법으로 운용할수도 있습니다.※ 비교 지수: [KRX Banks] x 100%"
+          }
+        ]
+      }
+    },
+    "KR7091180000": {
+      "isin": "KR7091180000",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 KRX Autos 지수(이하 &ldquo;추적대상지수&rdquo;라 한다)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 추적대상지수 : KRX Autos 지수다. 다만, 집합투자업자는 이 추적대상지수가 추적대상지수 산출기관의 상황, 지수에 포함된 종목의 매매 가능성 및 기타 운용에 영향을 줄 수 있는 운용환경 등의 변화로 인해 추적대상지수로서 적합하지 않다고 판단되거나 추적대상지수로서 적합하지 않는 상황이 발생할 것으로 판단되는 경우 관련된 다른 지수로 변경할 수 있습니다.",
+            "discription4": "(1) 이 투자신탁은 그 투자신탁재산을 추적대상 지수의 구성종목을 거의 그대로 투자하는 완전복제(full replication)에 의하여 운용하는 것을 원칙으로 합니다. 그러나, 투자대상 주식의 합병, 분할 등 불가피할 사유가 발생하는 경우에는 완전복제가 아닌 부분복제(Sampling)에 의한 방법으로 운용할 수도 있습니다.※ 비교 지수: [KRX Autos]ⅹ100%"
+          }
+        ]
+      }
+    },
+    "KR7091220004": {
+      "isin": "KR7091220004",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "이 투자신탁은 국내 주식을 법 시행령 제94조제2항제4호에서 규정하는 주된 투자대상자산으로 하여 &ldquo;KRX BANKS&rdquo;를 추적대상지수로 하여 보수차감후 1좌당 순자산가치의 변동률을 지수의 변동률과 유사하도록 투자신탁재산을 운용함을 목적으로 합니다.그러나, 위의 투자목적이 반드시 달성된다는 보장은 없으며, 집합투자업자, 신탁업자, 판매회사 등 이 투자신탁과 관련된 어떠한 당사자도 투자원금의 보장 또는 투자목적의 달성을 보장하지 아니합니다.",
+            "discription4": "(1) 투자전략 (운용전략 및 투자방침)이 투자신탁은 한국거래소가 발표하는 &ldquo;KRX BANKS&rdquo;를 추적대상지수로 하는 상장지수투자신탁으로서, 국내 거래소에 상장된 종목 중 &ldquo;은행주 종목&rdquo;에 투자신탁 자산총액의 60% 이상 투자하여 보수차감전 펀드의 수익률이 추적대상지수 수익률과 유사하도록 운용하는 것을 그 목적으로 합니다.※ 추적대상지수: KRX BANKS- 산출기관 및 대상종목 : 한국거래소에서 발표하는 지수로서 거래소와 코스닥 시장에 상장된 은행주 10 종목으로구성(2010.08.31 기준 )- 산출방법 : 유동주식수 가중 시가총액식 주가지수유동성, 자기자본이익률, 부채비율 고려하여 종목 선정연 1회 정기변경 / 지수내 단일 종목에 대한 한도 30%- 해당지수에 대한 정보는 www.krx.co.kr에서 검색하실 수 있습니다.※ 포트폴리오 구성방안이론적으로 추적대상지수에 포함된 주식을 해당 비율만큼 모두 포함하는 완전복제방법을 선호하며, 실제로 완전복제방법으로 포트폴리오를 구성할 예정이나, 추적대상지수에 포함되어 있는 주식 중 부도 가능성, 유동성 등을 감안하여 투자대상 종목군을 구성하고, 투자대상 종목군 중에서 추적오차 등을 감안하여 표본추출(Sampling) 방식으로도 투자할 수 있습니다. 이 경우 추적대상지수의 구성종목에 변경이 있을 경우에는 추적대상지수에 포함되지 않은 종목에 투자할 수도 있습니다. 그러나, 이 경우에도 추적대상 지수의 수익률과 유사한 수익률 달성이라는 본래의 목적에는 변함이 없습니다. 또한, 추적오차를 줄이기 위해 주식관련 장내파생상품에의 투자, 투자증권의 대여 등을 동 투자신탁의 신탁계약서에서 정하는 범위 내에서 실행할 수 있습니다.※ 추적대상지수: KRX BANKS"
+          }
+        ]
+      }
+    },
+    "KR7091230003": {
+      "isin": "KR7091230003",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "이 투자신탁은 국내 주식을 법 시행령 제94조제2항제4호에서 규정하는 주된 투자대상자산으로 하여 &ldquo;KRX SEMICON&rdquo;를 추적대상지수로 하여 보수차감후 1좌당 순자산가치의 변동률을 지수의 변동률과 유사하도록투자신탁재산을 운용함을 목적으로 합니다.그러나, 위의 투자목적이 반드시 달성된다는 보장은 없으며, 집합투자업자, 신탁업자, 판매회사 등 이 투자신탁과 관련된 어떠한 당사자도 투자원금의 보장 또는 투자목적의 달성을 보장하지 아니합니다.",
+            "discription4": "(1) 투자전략 (운용전략 및 투자방침)이 투자신탁은 한국거래소가 발표하는 &ldquo;KRX SEMICON&rdquo;를 추적대상지수로 하는 상장지수투자신탁으로서, 국내 거래소에 상장된 종목 중 &quot;전기ㆍ전자&quot;산업 종목에 투자신탁 자산총액의 60% 이상 투자하여 보수차감전 펀드의 수익률이 추적대상지수 수익률과 유사하도록 운용하는 것을 그 목적으로 합니다.※ 추적대상지수: KRX SEMICON- 산출기관 및 대상종목 : 한국거래소에서 발표하는 지수로서 &quot;전기ㆍ전자&quot;산업에 속한 반도체칩 제조사와 다른산업에 속한 종목 중 반도체 부품, 장비 제조사로 구성 (2010.08.31기준)- 산출방법 : 유동주식수 가중 시가총액식 주가지수유동성, 자기자본이익률, 부채비율 고려하여 종목 선정연 1회 정기변경 / 지수내 단일 종목에 대한 한도 30%- 해당지수에 대한 정보는 www.krx.co.kr에서 검색하실 수 있습니다.※ 추적대상지수: KRX SEMICON"
+          }
+        ]
+      }
+    },
+    "KR7099140006": {
+      "isin": "KR7099140006",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 HSCEI(&ldquo;Hang Seng China Enterprises Index&rdquo;이며, 이하 &ldquo;추적대상지수&rdquo;라 한다. 원화환산기준)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 이 투자신탁은 해외 증권시장에 상장된 해외주식등에 주로 투자하는 상품으로서 이 투자신탁의 수익자는 그 해외주식등에 직접 투자하는 위험을 부담할 수 있으며, 해외주식등은 다양한 경제 변수 및 주식등을 발행한 기업의 경영상황 등에 연동되어 수익이 변동되는 특성을 가지고 있습니다.. 또한 이 투자신탁은 해외주식 등의 투자에 따른 환율위험변동을 제거하기 위한 환헤지전략을 실시하지 않을 계획이므로 이 투자신탁 수익증권에 투자하는 수익자는 환율변동위험에 노출됩니다.다. 추적대상지수 : Hang Seng China Enterprises Index (KRW)라. 다만, 집합투자업자는 이 추적대상지수가 추적대상지수 산출기관의 상황, 지수에 포함된 종목의 매매가능성 및 기타 운용에 영향을 줄 수 있는 운용환경 등의 변화로 인해 추적대상지수로서 적합하지 않다고 판단되거나 추적대상지수로서 적합하지 않는 상황이 발생할 것으로 판단되는 경우 관련된 다른지수로 변경할 수 있습니다.※ 그러나 상기의 투자목적이 반드시 달성된다는 보장은 없으며, 집합투자업자, 신탁업자, 판매회사 등 이투자신탁과 관련된 어떠한 당사자도 투자원금의 보장 또는 투자목적의 달성을 보장하지 아니합니다.",
+            "discription4": "(1) 추적대상지수 구성종목 중에서 부도 리스크, 유동성 등을 감안한 종목으로 투자가능대상 종목을 구성하고, 당해 투자가능대상 종목 중에서 추적오차를 감안하여 종목군을 표본추출(Sampling)하여 투자합니다.(2) 추적대상지수[Hang Seng China Enterprises Index(KRW, 환헤지 안함)]의 개요1) Hang Seng China Enterprises Index(KRW, 환헤지 안함)는 HSI Services Limited(HSIL)가 산출및 공표하는 지수로서 홍콩증권거래소에 상장된 H-Shares를 대상으로 산출한 지수입니다.2) 동 지수에 채용하는 주식수는 유동성을 감안(free-float)하여 적용하며 지수 산출의 기준일은 1994년 8월 8일로서 이 때의 지수를 1,000pt로 하여 산출합니다. 2006년 3월 6일 이전에는 전체 시가총액의 가중평균으로 산출하였으나 이후 유동성을 감안한 시가총액을 기준으로 상한요소(Cap Factor, 0~1)를 적용하여 산출됩니다.3) 지수 산정 방법 등① 기준일 및 기준지수 : 1994년 8월 8일, 1,000pt② 산출 방식 : 유동성을 감안한 시가총액 가중 방식HSCEI 현시점 유동성 감안 시가총액 /전일 유동성 감안 시가총액 합계 * 전일종가지수※ 단, 시가총액산출시 상한요소(0~1)를 곱하여 산출함③ 상한요소 정기 변경 : 연 2회4) 지수 관련 수익자 유의 사항① 삼성 KODEX China H 증권상장지수투자신탁를 매입하거나 계약한 수익자는 동 증권신고서(또는 투자설명서) 별첨 &lsquo;투자자 확인사항&rsquo;에서 언급된 내용을 충분히 인지 및 이해하고 수용한 것으로 간주된다.② 삼성 KODEX China H 증권상장지수투자신탁의 목적으로 적용된 지수의 수준은 언제나 에이치에쓰 아이 서비스 리미티드(HSI Services Limited)의 재량으로 산출된 수준이 된다.(3) 포트폴리오 구성 방안&middot; 기본적으로 추적대상지수에 포함되어 있는 주식 중 부도 가능성, 유동성 등을 감안하여 투자대상 종목군을 구성하고, 투자대상 종목군 중에서 추적오차 등을 감안하여 표본추출(Sampling) 방식으로 투자합니다. 이 경우 추적대상지수의 구성종목에 변경이 있을 경우에는 추적대상지수에 포함되지 않은 종목에 투자할 수도 있습니다. 또한, 추적오차를 줄이기 위해 주식관련 장내파생상품의 투자, 투자증권의 대여 등을 동 증권신고서(또는 신탁계약)에서 정하는 범위 내에서 실행할 수 있습니다.※ 비교 지수: [HSCEI(KRW)]ⅹ100%"
+          }
+        ]
+      }
+    },
+    "KR7100910009": {
+      "isin": "KR7100910009",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "- 이 투자신탁은 집합투자규약 제17조에서 정의된 주식을 법 시행령 제94조제2항제4호에서 규정하는 주된 투자대상자산으로 하고 있습니다.- 이 투자신탁은 추적대상지수를 한국거래소가 산출하여 발표하는 KRX100 지수(&quot;추적대상 지수&quot;)로 하여, 추적대상지수인 KRX100 지수에 편입된 주식 등에 중장기 투자하여 비교지수와 유사한 투자수익률을 추구하는 상장지수투자신탁입니다.* 비교지수: [KRX100 지수 &times; 100%]",
+            "discription4": "가. 투자전략① 주식에 대한 투자전략- 법 제 4 조제 4 항의 규정에 의한 지분증권인 주권, 신주인수권이 표시된 것, 법률에 의하여 직접 설립된 법인이 발행한 출자증권(법 제 9 조제 15 항제 3 호의 주권상장법인이 발행한 것에 한합니다)에 투자신탁 자산총액의 60%이상을 투자합니다.② 파생상품에 대한 투자전략- 주식관련 파생상품 거래에 따른 위험평가액은 투자신탁 자산총액의 10% 이하가 되도록 투자합니다.이 투자신탁은 거래소에 상장되어 거래되는 주가지수파생상품을 주로 편입합니다.- 주가지수파생상품은 작은 증거금만으로 인덱스 추종이 가능한 레버리지 상품으로 개별주식으로 구성된 인덱스바스켓 매매에 비하여 거래가 간편하고 가용 현금이 증가하는 장점이 있으나,주가지수파생상품 자체의 수급 등에 따라 인덱스와 일시적인 괴리가 발생할 수 있습니다. 또한,주가지수파생상품은 만기가 존재하는 상품이므로 롤오버(Roll-over)에 따른 비용이 발생하며,개별주식과 마찬가지로 시장의 등락에 따른 위험에 노출됩니다.③ 이 투자신탁은 KRX100 지수와 유사한 수익과 위험을 갖는 것을 목적으로 하는 인덱스펀드로, KRX100 지수 등락에 따른 손익을 추구합니다. 또한, 차익거래, 보유주식의 대여 등의 다양한 전략을 통하여 지수대비 초과수익을 추구합니다. 그러나 주식시장의 변동 등으로 인하여 이 투자신탁의 투자목적이 반드시 달성된다는 보장은 없습니다.④ 이 투자신탁은 인덱스 추종을 위하여 편입종목의 기업분할, 합병 등과 같은 인덱스 구성비중의 변경 발생시 포트폴리오 변경을 위한 매매가 빈번히 발생할 수 있으므로 매매비용이 증가할 수 있습니다. 매매비용의 증가는 투자신탁의 비용의 증가를 야기할 수 있습니다.나. 위험관리 전략① 추종하는 인덱스와의 추적오차를 안정적으로 관리하기 위하여 추적오차 발생 요인을 분석하여 매분기 또는 필요시 포트폴리오를 재조정 합니다.② 투자신탁의 원본액이 정상적인 운용이 어려울 정도로 현저히 낮은 경우는 투자신탁이 해지될 수도 있습니다."
+          }
+        ]
+      }
+    },
+    "KR7101280006": {
+      "isin": "KR7101280006",
+      "description": {
+        "discription1": [],
+        "discription2": [
+          {
+            "discription1": null,
+            "discription2": null,
+            "discription3": "가. 이 투자신탁은 TOPIX100(&ldquo;Tokyo Stock Price Index 100&rdquo;이며, 이하 &ldquo;추적대상지수&rdquo;라 한다. 원화환산기준)를 추적대상 지수로 하여 1좌당 순자산가치의 변동률을 추적대상지수의 변동률과 유사하도록 투자신탁재산을 운용함을 그 운용목적으로 합니다.나. 이 투자신탁은 해외 증권시장에 상장된 해외주식등에 주로 투자하는 상품으로서 이 투자신탁의 수익자는 그 해외주식등에 직접 투자하는 위험을 부담할 수 있으며, 해외주식등은 다양한 경제 변수 및 주식 등을 발행한 기업의 경영상황 등에 연동되어 수익이 변동되는 특성을 가지고 있습니다. 또한 이 투자신탁은 해외주식 등의 투자에 따른 환율위험변동을 제거하기 위한 환헤지전략을 실시하지 않을 계획이므로 이 투자신탁 수익증권에 투자하는 수익자는 환율변동위험에 노출됩니다.다. 추적대상지수 : Tokyo Stock Price Index 100 (KRW)라. 다만, 집합투자업자는 이 추적대상지수가 추적대상지수 산출기관의 상황, 지수에 포함된 종목의 매매가능성 및 기타 운용에 영향을 줄 수 있는 운용환경 등의 변화로 인해 추적대상지수로서 적합하지 않다고 판단되거나 추적대상지수로서 적합하지 않는 상황이 발생할 것으로 판단되는 경우 관련된 다른지수로 변경할 수 있습니다.",
+            "discription4": "(1) 이 투자신탁은 추적대상지수 구성종목 중에서 부도 리스크, 유동성 등을 감안한 종목으로 투자가능대상 종목을 구성하고, 당해 투자가능대상 종목 중에서 추적오차를 감안하여 종목군을 표본추출(Sampling)하여 투자합니다.(2) 추적대상지수[Tokyo Stock Price Index 100 (KRW, 환헤지 안함)] 소개1) Tokyo Stock Price Index 100 (KRW, 환헤지 안함)의 개요- Tokyo Stock Price Index 100(KRW, 환헤지 안함, 이하 &ldquo;TOPIX100&rdquo;)는 TSE가 산출 및 공표하는 지수로서 동경증권거래소에 상장된 기업들 중 유동성 및 시가총액을 기준으로 상위100개 종목을 대상으로 산출한 지수입니다. 동 지수에 채용하는 주식수는 유동성을 감안(free-float)하여 적용하며 지수 산출의 기준일은 1998년 4월 1일로서 이 때의 지수를1,000pt로 하여 산출합니다.2) 지수 산정 방법 등① 기준일 및 기준지수 : 1998년 4월 1일, 1,000pt② 산출 방식 : 유동성을 감안한 시가총액 가중 방식TOPIX100 현시점 유동성 감안 시가총액 /전일 유동성 감안 시가총액 합계 * 전일종가지수③ 편입종목수 : 2008년 1월 29일 현재 100종목④ 상한요소 정기 변경 : 연 2회 (1월, 7월)3) 지수 관련 수익자 유의 사항① 삼성 KODEX Japan 증권상장지수투자신탁를 매입하거나 계약한 수익자는 동 투자설명서 별첨&lsquo;투자자 확인사항&rsquo;에서 언급된 내용을 충분히 인지 및 이해하고 수용한 것으로 간주됩니다.② 삼성 KODEX Japan 증권상장지수투자신탁의 목적으로 적용된 지수의 수준은 언제나 동경증권거래소(TSE, Tokyo Stock Exchange)의 재량으로 산출된 수준이 됩니다.(3) 포트폴리오 구성 방안&middot; 기본적으로 추적대상지수에 포함되어 있는 주식 중 부도 가능성, 유동성 등을 감안하여 투자대상 종목군을 구성하고, 투자대상 종목군 중에서 추적오차 등을 감안하여 표본추출(Sampling) 방식으로 투자합니다. 이 경우 추적대상지수의 구성종목에 변경이 있을 경우에는 추적대상지수에 포함되지 않은 종목에 투자할 수도 있습니다. 또한, 추적오차를 줄이기 위해 주식관련 장내파생상품의 투자, 투자증권의 대여 등을 동 증권신고서(또는 신탁계약)에서 정하는 범위 내에서 실행할 수 있습니다.※ 비교 지수: [TOPIX100(KRW)]ⅹ100%"
+          }
+        ]
+      }
+    }
+  },
+  "crawled_at": "2026-03-24T16:55:56.853658"
+}

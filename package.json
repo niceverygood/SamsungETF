@@ -1,0 +1,14 @@
+{
+    "name": "funetf-ai-chatbot",
+    "version": "1.0.0",
+    "description": "삼성자산운용 KODEX ETF AI 챗봇 시연 페이지",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2",
+        "cors": "^2.8.5"
+    }
+}
