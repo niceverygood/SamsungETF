@@ -621,33 +621,28 @@ app.get('/api/yahoo/quote/:ticker', async (req, res) => {
     }
 });
 
-// 야후 파이낸스 - 여러 종목 한번에 조회
+// 야후 파이낸스 - v8 차트 API로 시세 조회
+async function yahooChartFetch(symbol) {
+    try {
+        const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=5d`, {
+            headers: { 'User-Agent': 'Mozilla/5.0' }
+        });
+        if (!r.ok) return null;
+        const d = await r.json();
+        const m = d.chart?.result?.[0]?.meta;
+        if (!m) return null;
+        const prev = m.previousClose || m.chartPreviousClose || m.regularMarketPrice;
+        const chg = m.regularMarketPrice - prev;
+        return { symbol: m.symbol, name: m.shortName || m.symbol, price: m.regularMarketPrice,
+            change: chg.toFixed(2), changePercent: prev ? (chg / prev * 100).toFixed(2) : '0.00', currency: m.currency };
+    } catch { return null; }
+}
+
 app.get('/api/yahoo/quotes', async (req, res) => {
     try {
-        const tickers = req.query.symbols || 'SPY,QQQ,069500.KS';
-        const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${tickers}`;
-
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
-            }
-        });
-
-        if (!response.ok) throw new Error(`Yahoo API error: ${response.status}`);
-        const data = await response.json();
-
-        const quotes = (data.quoteResponse?.result || []).map(q => ({
-            symbol: q.symbol,
-            name: q.shortName || q.longName,
-            price: q.regularMarketPrice,
-            change: q.regularMarketChange?.toFixed(2),
-            changePercent: q.regularMarketChangePercent?.toFixed(2),
-            volume: q.regularMarketVolume,
-            marketCap: q.marketCap,
-            currency: q.currency
-        }));
-
-        res.json({ success: true, data: quotes, timestamp: new Date().toISOString() });
+        const tickers = (req.query.symbols || 'SPY,QQQ').split(',');
+        const results = await Promise.all(tickers.map(s => yahooChartFetch(s.trim())));
+        res.json({ success: true, data: results.filter(Boolean), timestamp: new Date().toISOString() });
     } catch (error) {
         res.json({ success: false, error: error.message });
     }
@@ -660,9 +655,7 @@ app.get('/api/market-overview', async (req, res) => {
             fetch('https://m.stock.naver.com/api/index/KOSPI/basic', {
                 headers: { 'User-Agent': 'Mozilla/5.0' }
             }).then(r => r.json()),
-            fetch('https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EGSPC,%5EIXIC,%5EDJI', {
-                headers: { 'User-Agent': 'Mozilla/5.0' }
-            }).then(r => r.json())
+            Promise.all(['^GSPC', '^IXIC', '^DJI'].map(s => yahooChartFetch(s)))
         ]);
 
         const overview = {
@@ -681,13 +674,13 @@ app.get('/api/market-overview', async (req, res) => {
         }
 
         if (yahooRes.status === 'fulfilled') {
-            const quotes = yahooRes.value?.quoteResponse?.result || [];
-            quotes.forEach(q => {
+            const quotes = yahooRes.value || [];
+            quotes.filter(Boolean).forEach(q => {
                 overview.global[q.symbol] = {
-                    name: q.shortName,
-                    price: q.regularMarketPrice,
-                    change: q.regularMarketChange?.toFixed(2),
-                    changePercent: q.regularMarketChangePercent?.toFixed(2)
+                    name: q.name,
+                    price: q.price,
+                    change: q.change,
+                    changePercent: q.changePercent
                 };
             });
         }

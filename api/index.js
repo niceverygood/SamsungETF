@@ -261,26 +261,30 @@ async function fetchAllMarketData() {
             results.kospi = { price: d.closePrice, change: d.compareToPreviousClosePrice, changeRate: d.fluctuationsRatio };
         }).catch(() => {});
 
-        const yahooKrPromise = fetch('https://query1.finance.yahoo.com/v7/finance/quote?symbols=069500.KS,122630.KS,091160.KS,305720.KS,379800.KS,379810.KS', {
-            headers: { 'User-Agent': 'Mozilla/5.0' }
-        }).then(r => r.json()).then(d => {
-            results.yahoo_kr = (d.quoteResponse?.result || []).map(q => ({
-                symbol: q.symbol, name: q.shortName, price: q.regularMarketPrice,
-                change: q.regularMarketChange?.toFixed(2),
-                changePercent: q.regularMarketChangePercent?.toFixed(2),
-                volume: q.regularMarketVolume, currency: q.currency,
-            }));
+        const yahooChartFetch = async (symbol) => {
+            try {
+                const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=5d`, {
+                    headers: { 'User-Agent': 'Mozilla/5.0' }
+                });
+                if (!r.ok) return null;
+                const d = await r.json();
+                const m = d.chart?.result?.[0]?.meta;
+                if (!m) return null;
+                const prev = m.previousClose || m.chartPreviousClose || m.regularMarketPrice;
+                const chg = m.regularMarketPrice - prev;
+                return { symbol: m.symbol, name: m.shortName || m.symbol, price: m.regularMarketPrice,
+                    change: chg.toFixed(2), changePercent: prev ? (chg / prev * 100).toFixed(2) : '0.00', currency: m.currency };
+            } catch { return null; }
+        };
+
+        const yahooUsSymbols = ['SPY', 'QQQ', '%5EGSPC', '%5EIXIC', '%5EDJI'];
+        const yahooUsPromise = Promise.all(yahooUsSymbols.map(s => yahooChartFetch(s))).then(arr => {
+            results.yahoo_us = arr.filter(Boolean);
         }).catch(() => {});
 
-        const yahooUsPromise = fetch('https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EGSPC,%5EIXIC,%5EDJI,SPY,QQQ', {
-            headers: { 'User-Agent': 'Mozilla/5.0' }
-        }).then(r => r.json()).then(d => {
-            results.yahoo_us = (d.quoteResponse?.result || []).map(q => ({
-                symbol: q.symbol, name: q.shortName, price: q.regularMarketPrice,
-                change: q.regularMarketChange?.toFixed(2),
-                changePercent: q.regularMarketChangePercent?.toFixed(2),
-                currency: q.currency,
-            }));
+        const yahooKrSymbols = ['069500.KS', '122630.KS', '091160.KS', '379800.KS'];
+        const yahooKrPromise = Promise.all(yahooKrSymbols.map(s => yahooChartFetch(s))).then(arr => {
+            results.yahoo_kr = arr.filter(Boolean);
         }).catch(() => {});
 
         await Promise.race([
