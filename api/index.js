@@ -25,15 +25,18 @@ try {
 
 function getFunETFSummary() {
     if (!FUNETF_DATA?.kodex_etfs) return '';
-    const top20 = FUNETF_DATA.kodex_etfs
+    const top20 = [...FUNETF_DATA.kodex_etfs]
         .sort((a, b) => b.popularity - a.popularity)
         .slice(0, 20);
     let s = '\n\n## FunETF 크롤링 데이터 (KODEX ETF 인기순 Top 20)\n';
-    s += '| 순위 | ETF명 | NAV(원) | 인기도 |\n|------|-------|---------|--------|\n';
+    s += '| 순위 | ETF명 | 현재가(원) | 순자산(억원) | 1개월수익률 | 인기도 |\n|------|-------|-----------|------------|-----------|--------|\n';
     top20.forEach((etf, i) => {
-        s += `| ${i + 1} | ${etf.name} | ${Math.round(etf.nav).toLocaleString()} | ${etf.popularity.toLocaleString()} |\n`;
+        const price = etf.price ? Number(etf.price).toLocaleString() : '-';
+        const aum = etf.aum ? Math.round(etf.aum).toLocaleString() : '-';
+        const ret1m = etf.return1m != null ? `${etf.return1m > 0 ? '+' : ''}${etf.return1m}%` : '-';
+        s += `| ${i + 1} | ${etf.name} | ${price} | ${aum} | ${ret1m} | ${etf.popularity.toLocaleString()} |\n`;
     });
-    s += `\n총 KODEX ETF: ${FUNETF_DATA.kodex_etfs.length}개 / 전체 시장 ETF: ${FUNETF_DATA.all_etf_count}개`;
+    s += `\n총 KODEX ETF: ${FUNETF_DATA.kodex_count || FUNETF_DATA.kodex_etfs.length}개 / 전체 시장 ETF: ${FUNETF_DATA.all_etf_count}개`;
     return s;
 }
 
