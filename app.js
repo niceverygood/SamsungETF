@@ -33,7 +33,7 @@ function handleKeyDown(e) {
 }
 
 let isProcessing = false;
-let selectedModel = 'sonnet';
+let selectedModel = 'opus';
 
 function selectModel(model) {
     selectedModel = model;
