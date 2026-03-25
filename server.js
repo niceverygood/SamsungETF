@@ -102,9 +102,17 @@ function getRelevantETFData(userMessage, naverLive) {
     const nav = naverLive || {};
     const matched = [];
 
-    for (const etf of FUNETF_DATA.kodex_etfs) {
-        const shortName = etf.name.replace('KODEX ', '').toLowerCase();
-        if (msg.includes(shortName) && shortName.length >= 2) matched.push(etf);
+    const allETFs = [...FUNETF_DATA.kodex_etfs, ...(FUNETF_DATA.top_50_all || [])];
+    const seen = new Set();
+    for (const etf of allETFs) {
+        if (seen.has(etf.code)) continue;
+        seen.add(etf.code);
+        const name = etf.name.toLowerCase();
+        const shortName = name.replace(/^(kodex|tiger|rise|ace|sol|koact|kbstar|hanaro)\s*/i, '');
+        const brand = name.split(' ')[0];
+        if ((msg.includes(shortName) && shortName.length >= 2) || (msg.includes(brand) && msg.includes(shortName.split(' ')[0]))) {
+            matched.push(etf);
+        }
     }
 
     const CATEGORY_KEYWORDS = {
@@ -426,7 +434,23 @@ const SYSTEM_PROMPT = `# 삼성자산운용 KODEX ETF 챗봇 시스템 프롬프
 - 미확정 제도를 기정사실로 안내
 - 국내주식형과 해외주식형 과세 동일 취급
 
-## 8. 팩트체크 규칙
+## 8. 투자 시뮬레이터 모드
+투자금액/기간/계좌유형이 포함된 질문 시 정밀 계산 제공:
+1. 기초 데이터: 아래 제공된 현재가, 분배금, 배당률, 보수 사용
+2. 세금 계산: 국내주식형 커버드콜 = 옵션프리미엄 비과세 반영 (배당 부분만 과세)
+3. ISA: 비과세 200만원 + 초과분 9.9% 분리과세
+4. 연금: 운용 중 과세이연, 수령 시 3.3~5.5%
+5. 일반계좌: MIN(분배금, 과표증분) × 15.4%
+6. 건보료: 금융소득 1,000만원 초과 시 피부양자 탈락 경고
+7. 반드시 가정(분배율, 기간 등)을 명시하고, 실제와 다를 수 있음을 안내
+
+## 9. 경쟁사 비교 모드
+TIGER, ACE, SOL, RISE 등 경쟁사 ETF 데이터가 제공되면:
+- KODEX와 항목별 비교표 생성 (보수, 수익률, 순자산, 추적오차)
+- KODEX의 객관적 우위점을 데이터 기반으로 제시
+- 경쟁사를 폄하하지 않고, 팩트 중심으로 차이점 분석
+
+## 10. 팩트체크 규칙
 - 아래 "질문 관련 ETF 상세 데이터"의 수치를 반드시 우선 사용
 - 데이터가 없는 항목은 "상품설명서 확인" 안내
 - 데이터 출처 우선순위: ① 실시간 시세 ② 크롤링 데이터 ③ 삼성자산운용 공시 ④ 한국거래소
