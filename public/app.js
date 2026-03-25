@@ -59,8 +59,8 @@ async function sendMessage() {
     try {
         removeTyping(typingEl);
         const modelInfo = selectedModel === 'opus'
-            ? { key: 'claude', name: 'Claude Opus 4.6', shortName: 'Opus', icon: '🧠', color: '#8B5CF6' }
-            : { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Sonnet', icon: '⚡', color: '#8B5CF6' };
+            ? { key: 'claude', name: 'FunETF AI 🧠', shortName: '깊은 분석', icon: '🧠', color: '#8B5CF6' }
+            : { key: 'claude', name: 'FunETF AI ⚡', shortName: '빠른 답변', icon: '⚡', color: '#8B5CF6' };
         const streamBubble = addMessage('', 'bot', modelInfo);
         const contentEl = streamBubble?.querySelector('.bubble-content');
 

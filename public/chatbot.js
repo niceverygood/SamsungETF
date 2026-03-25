@@ -76,14 +76,14 @@ class KODEXChatbot {
                         }
                         if (parsed.done) {
                             this.conversationHistory.push({ role: 'assistant', content: fullReply });
-                            return { reply: fullReply, modelUsed: { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude', icon: '🧠', color: '#8B5CF6' } };
+                            return { reply: fullReply, modelUsed: { key: 'claude', name: 'FunETF AI', shortName: 'FunETF AI', icon: '🧠', color: '#8B5CF6' } };
                         }
                     } catch (e) { /* skip parse errors */ }
                 }
             }
 
             this.conversationHistory.push({ role: 'assistant', content: fullReply });
-            return { reply: fullReply, modelUsed: { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude', icon: '🧠', color: '#8B5CF6' } };
+            return { reply: fullReply, modelUsed: { key: 'claude', name: 'FunETF AI', shortName: 'FunETF AI', icon: '🧠', color: '#8B5CF6' } };
         } catch (error) {
             console.error('스트리밍 오류:', error);
             return {
