@@ -302,7 +302,47 @@
           "name": "현대차",
           "weight": 2.45
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 80.0,
+          "rate": 0.11,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251030",
+          "amount": 140.0,
+          "rate": 0.24,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250730",
+          "amount": 176.0,
+          "rate": 0.4,
+          "payDate": "20250804"
+        },
+        {
+          "date": "20250429",
+          "amount": 429.0,
+          "rate": 1.27,
+          "payDate": "20250507"
+        },
+        {
+          "date": "20250124",
+          "amount": 110.0,
+          "rate": 0.33,
+          "payDate": "20250204"
+        },
+        {
+          "date": "20241030",
+          "amount": 120.0,
+          "rate": 0.34,
+          "payDate": "20241104"
+        }
+      ],
+      "annualDividend": 825.0,
+      "dividendYield": 0.99
     },
     {
       "name": "KODEX 미국나스닥100",
@@ -1518,7 +1558,47 @@
           "name": "한미반도체",
           "weight": 10.7
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20250429",
+          "amount": 416.0,
+          "rate": 1.41,
+          "payDate": "20250507"
+        },
+        {
+          "date": "20240429",
+          "amount": 65.0,
+          "rate": 0.16,
+          "payDate": "20240503"
+        },
+        {
+          "date": "20230427",
+          "amount": 210.0,
+          "rate": 0.76,
+          "payDate": "20230503"
+        },
+        {
+          "date": "20220428",
+          "amount": 280.0,
+          "rate": 0.78,
+          "payDate": "20220503"
+        },
+        {
+          "date": "20210429",
+          "amount": 100.0,
+          "rate": 0.26,
+          "payDate": "20210504"
+        },
+        {
+          "date": "20200428",
+          "amount": 95.0,
+          "rate": 0.42,
+          "payDate": "20200506"
+        }
+      ],
+      "annualDividend": 416.0,
+      "dividendYield": 0.42
     },
     {
       "name": "KODEX 코리아밸류업",
@@ -3722,7 +3802,47 @@
           "name": "하나금융지주",
           "weight": 19.81
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260226",
+          "amount": 50.0,
+          "rate": 0.3,
+          "payDate": "20260304"
+        },
+        {
+          "date": "20260129",
+          "amount": 45.0,
+          "rate": 0.33,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251229",
+          "amount": 45.0,
+          "rate": 0.35,
+          "payDate": "20260105"
+        },
+        {
+          "date": "20251127",
+          "amount": 42.0,
+          "rate": 0.33,
+          "payDate": "20251202"
+        },
+        {
+          "date": "20251030",
+          "amount": 42.0,
+          "rate": 0.35,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250929",
+          "amount": 42.0,
+          "rate": 0.36,
+          "payDate": "20251002"
+        }
+      ],
+      "annualDividend": 482.0,
+      "dividendYield": 3.3
     },
     {
       "name": "KODEX 미국S&P500선물(H)",
@@ -4102,7 +4222,47 @@
           "name": "현대모비스",
           "weight": 16.18
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 66.0,
+          "rate": 0.21,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20250429",
+          "amount": 584.0,
+          "rate": 3.35,
+          "payDate": "20250507"
+        },
+        {
+          "date": "20240429",
+          "amount": 590.0,
+          "rate": 2.7,
+          "payDate": "20240503"
+        },
+        {
+          "date": "20230427",
+          "amount": 425.0,
+          "rate": 2.25,
+          "payDate": "20230503"
+        },
+        {
+          "date": "20220428",
+          "amount": 365.0,
+          "rate": 1.92,
+          "payDate": "20220503"
+        },
+        {
+          "date": "20210429",
+          "amount": 230.0,
+          "rate": 1.01,
+          "payDate": "20210504"
+        }
+      ],
+      "annualDividend": 650.0,
+      "dividendYield": 2.1
     },
     {
       "name": "KODEX TDF2030액티브",
@@ -6230,7 +6390,47 @@
           "name": "MITSUBISHI UFJ FINANCIAL GRO",
           "weight": 4.49
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 29.0,
+          "rate": 0.1,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251030",
+          "amount": 182.0,
+          "rate": 0.69,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250730",
+          "amount": 32.0,
+          "rate": 0.14,
+          "payDate": "20250804"
+        },
+        {
+          "date": "20250429",
+          "amount": 247.0,
+          "rate": 1.09,
+          "payDate": "20250507"
+        },
+        {
+          "date": "20241030",
+          "amount": 204.0,
+          "rate": 0.97,
+          "payDate": "20241104"
+        },
+        {
+          "date": "20240429",
+          "amount": 200.0,
+          "rate": 0.99,
+          "payDate": "20240503"
+        }
+      ],
+      "annualDividend": 490.0,
+      "dividendYield": 1.73
     },
     {
       "name": "KODEX 필수소비재",
@@ -7978,7 +8178,47 @@
           "name": "CHINA CONSTRUCTION BANK-H",
           "weight": 6.85
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 115.0,
+          "rate": 0.46,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251030",
+          "amount": 168.0,
+          "rate": 0.68,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250730",
+          "amount": 390.0,
+          "rate": 1.69,
+          "payDate": "20250804"
+        },
+        {
+          "date": "20250124",
+          "amount": 354.0,
+          "rate": 1.82,
+          "payDate": "20250204"
+        },
+        {
+          "date": "20240730",
+          "amount": 206.0,
+          "rate": 1.32,
+          "payDate": "20240802"
+        },
+        {
+          "date": "20240130",
+          "amount": 358.0,
+          "rate": 2.65,
+          "payDate": "20240202"
+        }
+      ],
+      "annualDividend": 673.0,
+      "dividendYield": 2.92
     },
     {
       "name": "KODEX 미국S&P바이오(합성)",

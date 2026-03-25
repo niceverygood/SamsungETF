@@ -700,6 +700,23 @@ body {
   color: var(--samsung-blue-light);
 }
 
+/* Follow-up Questions */
+.follow-up-questions {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.follow-up-questions p {
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.follow-up-questions .quick-btn {
+  margin: 4px 6px 4px 0;
+  font-size: 12px;
+}
+
 /* Typing Indicator */
 .typing-indicator {
   display: flex;

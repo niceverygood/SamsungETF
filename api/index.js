@@ -89,20 +89,61 @@ function getRelevantETFData(userMessage, naverLive) {
     if (matched.length === 0) return '';
 
     const unique = matched.slice(0, 10);
+
+    // 비교 모드 감지
+    const isCompare = /비교|vs|차이|뭐가 (?:다르|나아|좋아)|어떤 게/.test(msg);
+
     let s = '\n\n## 🔍 질문 관련 KODEX ETF 상세 데이터\n';
-    for (const etf of unique) {
-        const live = nav[etf.name];
-        const price = live ? live.price : (etf.price ? Number(etf.price).toLocaleString() + '원' : '-');
-        const chg = live ? ` (${live.changeRate}%)` : '';
-        s += `\n### ${etf.name} (${etf.code})\n`;
-        s += `- 현재가: ${price}${chg}\n`;
-        s += `- 순자산: ${etf.aum ? Math.round(etf.aum).toLocaleString() + '억원' : '-'}\n`;
-        s += `- 총보수: ${etf.fee != null ? etf.fee + '%' : '-'}\n`;
-        s += `- 수익률: 1개월 ${etf.return1m ?? '-'}% / 3개월 ${etf.return3m ?? '-'}% / 6개월 ${etf.return6m ?? '-'}% / 1년 ${etf.return1y ?? '-'}%\n`;
-        s += `- 유형: ${etf.category}/${etf.subCategory} | ${etf.type} | 과세: ${etf.taxType || '-'}\n`;
-        s += `- 환헤지: ${etf.hedged ? '예(H)' : '아니오'}\n`;
-        if (etf.top3Holdings?.length) {
-            s += `- 상위 보유종목: ${etf.top3Holdings.map(h => `${h.name}(${h.weight}%)`).join(', ')}\n`;
+
+    if (isCompare && unique.length >= 2) {
+        s += '\n### [비교 모드] 아래 ETF를 표로 비교해서 답변하세요\n';
+        s += '| 항목 |';
+        unique.slice(0, 4).forEach(e => { s += ` ${e.name} |`; });
+        s += '\n|------|';
+        unique.slice(0, 4).forEach(() => { s += '------|'; });
+
+        const rows = [
+            ['종목코드', e => e.code],
+            ['현재가', e => { const l = nav[e.name]; return l ? l.price : (e.price?.toLocaleString() + '원'); }],
+            ['등락률', e => { const l = nav[e.name]; return l ? l.changeRate + '%' : '-'; }],
+            ['순자산(억)', e => e.aum ? Math.round(e.aum).toLocaleString() : '-'],
+            ['총보수', e => e.fee != null ? e.fee + '%' : '-'],
+            ['1개월', e => e.return1m != null ? e.return1m + '%' : '-'],
+            ['3개월', e => e.return3m != null ? e.return3m + '%' : '-'],
+            ['1년', e => e.return1y != null ? e.return1y + '%' : '-'],
+            ['유형', e => `${e.category}/${e.subCategory}`],
+            ['과세', e => e.taxType || '-'],
+            ['환헤지', e => e.hedged ? 'O' : 'X'],
+            ['상위종목', e => e.top3Holdings?.map(h => h.name).join(', ') || '-'],
+            ['연간분배금', e => e.annualDividend ? e.annualDividend + '원' : '-'],
+            ['배당률', e => e.dividendYield ? e.dividendYield + '%' : '-'],
+        ];
+        for (const [label, fn] of rows) {
+            s += `\n| ${label} |`;
+            unique.slice(0, 4).forEach(e => { s += ` ${fn(e)} |`; });
+        }
+        s += '\n';
+    } else {
+        for (const etf of unique) {
+            const live = nav[etf.name];
+            const price = live ? live.price : (etf.price ? Number(etf.price).toLocaleString() + '원' : '-');
+            const chg = live ? ` (${live.changeRate}%)` : '';
+            s += `\n### ${etf.name} (${etf.code})\n`;
+            s += `- 현재가: ${price}${chg}\n`;
+            s += `- 순자산: ${etf.aum ? Math.round(etf.aum).toLocaleString() + '억원' : '-'}\n`;
+            s += `- 총보수: ${etf.fee != null ? etf.fee + '%' : '-'}\n`;
+            s += `- 수익률: 1개월 ${etf.return1m ?? '-'}% / 3개월 ${etf.return3m ?? '-'}% / 6개월 ${etf.return6m ?? '-'}% / 1년 ${etf.return1y ?? '-'}%\n`;
+            s += `- 유형: ${etf.category}/${etf.subCategory} | ${etf.type} | 과세: ${etf.taxType || '-'}\n`;
+            s += `- 환헤지: ${etf.hedged ? '예(H)' : '아니오'}\n`;
+            if (etf.top3Holdings?.length) {
+                s += `- 상위 보유종목: ${etf.top3Holdings.map(h => `${h.name}(${h.weight}%)`).join(', ')}\n`;
+            }
+            if (etf.annualDividend) {
+                s += `- 연간 분배금: ${etf.annualDividend}원 (배당률 ${etf.dividendYield ?? '-'}%)\n`;
+            }
+            if (etf.distributions?.length) {
+                s += `- 최근 분배 이력: ${etf.distributions.slice(0, 4).map(d => `${d.date.slice(0,4)}.${d.date.slice(4,6)} ${d.amount}원`).join(' / ')}\n`;
+            }
         }
     }
     return s;
@@ -385,6 +426,28 @@ const SYSTEM_PROMPT = `당신은 삼성자산운용 KODEX ETF 전문 AI 어시�
 4. 실시간 데이터가 있으면 구체적 수치를 반드시 인용
 5. 확실하지 않은 수치는 "약", "추정" 등으로 표현
 6. 마지막에 간결한 면책 조항 포함
+
+## 9. 팩트체크 규칙 (매우 중요)
+- 아래 "질문 관련 KODEX ETF 상세 데이터"에 수치가 제공되면 반드시 그 수치를 사용
+- 보수, 수익률, 보유종목 비중, 분배금 등 데이터가 제공된 항목은 절대 다른 수치로 바꾸지 말 것
+- 데이터가 없는 항목은 "정확한 수치는 상품설명서를 확인해주세요"로 안내
+- ETF 종목코드가 제공되면 정확히 인용
+
+## 10. 후속 질문 추천 (매 답변 마지막에 반드시 포함)
+답변 끝에 아래 형식으로 관련 후속 질문 3개를 추천:
+<div class="follow-up-questions">
+<p><strong>💡 이런 것도 물어보세요:</strong></p>
+<button class="quick-btn" onclick="sendQuickMessage('후속질문1')">후속질문1</button>
+<button class="quick-btn" onclick="sendQuickMessage('후속질문2')">후속질문2</button>
+<button class="quick-btn" onclick="sendQuickMessage('후속질문3')">후속질문3</button>
+</div>
+후속 질문은 현재 답변 내용과 관련된 심화/연관 질문으로 구성. 예:
+- 수익률 답변 → "다른 반도체 ETF랑 비교해줘", "ISA에서 이 ETF 세금은?"
+- 커버드콜 답변 → "분배금 얼마나 줘?", "금리 인하기에도 괜찮아?"
+
+## 11. 비교 모드
+"[비교 모드]" 데이터가 제공되면 반드시 비교표를 활용하여 항목별 차이점을 명확히 분석
+각 ETF의 장단점을 균형있게 제시하되, KODEX 상품의 차별점을 자연스럽게 강조
 
 ## 면책 조항
 - 이 금융상품은 예금자보호법에 따라 보호되지 않습니다
