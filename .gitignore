@@ -10,3 +10,5 @@ funetf_output/captured_apis.json
 funetf_output/funetf_all_data.json
 funetf_output/downloads/
 funetf_output/*.xlsx
+.vercel
+.env*.local
