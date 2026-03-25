@@ -36,7 +36,60 @@
           "name": "KODEX 200",
           "weight": 7.45
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260312",
+          "amount": 252.0,
+          "rate": 1.44,
+          "payDate": "20260317"
+        },
+        {
+          "date": "20260212",
+          "amount": 244.0,
+          "rate": 1.45,
+          "payDate": "20260220"
+        },
+        {
+          "date": "20260114",
+          "amount": 213.0,
+          "rate": 1.42,
+          "payDate": "20260119"
+        },
+        {
+          "date": "20251212",
+          "amount": 196.0,
+          "rate": 1.47,
+          "payDate": "20251217"
+        },
+        {
+          "date": "20251113",
+          "amount": 196.0,
+          "rate": 1.43,
+          "payDate": "20251118"
+        },
+        {
+          "date": "20251014",
+          "amount": 172.0,
+          "rate": 1.42,
+          "payDate": "20251017"
+        },
+        {
+          "date": "20250912",
+          "amount": 161.0,
+          "rate": 1.42,
+          "payDate": "20250917"
+        },
+        {
+          "date": "20250813",
+          "amount": 163.0,
+          "rate": 1.47,
+          "payDate": "20250819"
+        }
+      ],
+      "annualDividend": 2179.0,
+      "dividendYield": 12.59,
+      "divFrequency": "월배당"
     },
     {
       "name": "KODEX 미국S&P500",
@@ -74,7 +127,36 @@
           "name": "마이크로소프트/MICROSOFT CORP",
           "weight": 5.09
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 119.0,
+          "rate": 0.53,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251030",
+          "amount": 110.0,
+          "rate": 0.49,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250730",
+          "amount": 104.0,
+          "rate": 0.51,
+          "payDate": "20250804"
+        },
+        {
+          "date": "20250429",
+          "amount": 56.0,
+          "rate": 0.31,
+          "payDate": "20250507"
+        }
+      ],
+      "annualDividend": 389.0,
+      "dividendYield": 1.75,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 금융고배당TOP10타겟위클리커버드콜",
@@ -112,7 +194,60 @@
           "name": "신한지주",
           "weight": 13.08
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260226",
+          "amount": 189.0,
+          "rate": 1.3,
+          "payDate": "20260304"
+        },
+        {
+          "date": "20260129",
+          "amount": 155.0,
+          "rate": 1.26,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251229",
+          "amount": 152.0,
+          "rate": 1.27,
+          "payDate": "20260105"
+        },
+        {
+          "date": "20251127",
+          "amount": 154.0,
+          "rate": 1.25,
+          "payDate": "20251202"
+        },
+        {
+          "date": "20251030",
+          "amount": 154.0,
+          "rate": 1.28,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250929",
+          "amount": 158.0,
+          "rate": 1.29,
+          "payDate": "20251002"
+        },
+        {
+          "date": "20250828",
+          "amount": 154.0,
+          "rate": 1.27,
+          "payDate": "20250902"
+        },
+        {
+          "date": "20250730",
+          "amount": 163.0,
+          "rate": 1.3,
+          "payDate": "20250804"
+        }
+      ],
+      "annualDividend": 1810.0,
+      "dividendYield": 14.26,
+      "divFrequency": "월배당"
     },
     {
       "name": "KODEX 미국우주항공",
@@ -188,7 +323,60 @@
           "name": "Raytheon Technologies Corp",
           "weight": 3.35
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260312",
+          "amount": 99.0,
+          "rate": 0.77,
+          "payDate": "20260317"
+        },
+        {
+          "date": "20260212",
+          "amount": 99.0,
+          "rate": 0.76,
+          "payDate": "20260220"
+        },
+        {
+          "date": "20260114",
+          "amount": 98.0,
+          "rate": 0.76,
+          "payDate": "20260119"
+        },
+        {
+          "date": "20251212",
+          "amount": 98.0,
+          "rate": 0.77,
+          "payDate": "20251217"
+        },
+        {
+          "date": "20251113",
+          "amount": 96.0,
+          "rate": 0.75,
+          "payDate": "20251118"
+        },
+        {
+          "date": "20251014",
+          "amount": 93.0,
+          "rate": 0.76,
+          "payDate": "20251017"
+        },
+        {
+          "date": "20250912",
+          "amount": 92.0,
+          "rate": 0.78,
+          "payDate": "20250917"
+        },
+        {
+          "date": "20250813",
+          "amount": 92.0,
+          "rate": 0.79,
+          "payDate": "20250819"
+        }
+      ],
+      "annualDividend": 1132.0,
+      "dividendYield": 8.98,
+      "divFrequency": "월배당"
     },
     {
       "name": "KoAct 코스닥액티브",
@@ -264,7 +452,60 @@
           "name": "마이크로소프트/MICROSOFT CORP",
           "weight": 5.66
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260226",
+          "amount": 161.0,
+          "rate": 1.68,
+          "payDate": "20260304"
+        },
+        {
+          "date": "20260129",
+          "amount": 167.0,
+          "rate": 1.68,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251229",
+          "amount": 172.0,
+          "rate": 1.7,
+          "payDate": "20260105"
+        },
+        {
+          "date": "20251127",
+          "amount": 167.0,
+          "rate": 1.64,
+          "payDate": "20251202"
+        },
+        {
+          "date": "20251030",
+          "amount": 170.0,
+          "rate": 1.63,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250929",
+          "amount": 165.0,
+          "rate": 1.67,
+          "payDate": "20251002"
+        },
+        {
+          "date": "20250828",
+          "amount": 159.0,
+          "rate": 1.67,
+          "payDate": "20250902"
+        },
+        {
+          "date": "20250730",
+          "amount": 159.0,
+          "rate": 1.64,
+          "payDate": "20250804"
+        }
+      ],
+      "annualDividend": 1931.0,
+      "dividendYield": 19.65,
+      "divFrequency": "월배당"
     },
     {
       "name": "KODEX 200",
@@ -342,7 +583,8 @@
         }
       ],
       "annualDividend": 825.0,
-      "dividendYield": 0.99
+      "dividendYield": 0.99,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 미국나스닥100",
@@ -380,7 +622,36 @@
           "name": "마이크로소프트/MICROSOFT CORP",
           "weight": 5.78
         }
-      ]
+      ],
+      "distributions": [
+        {
+          "date": "20260129",
+          "amount": 68.0,
+          "rate": 0.28,
+          "payDate": "20260203"
+        },
+        {
+          "date": "20251030",
+          "amount": 63.0,
+          "rate": 0.25,
+          "payDate": "20251104"
+        },
+        {
+          "date": "20250730",
+          "amount": 59.0,
+          "rate": 0.27,
+          "payDate": "20250804"
+        },
+        {
+          "date": "20250429",
+          "amount": 33.0,
+          "rate": 0.18,
+          "payDate": "20250507"
+        }
+      ],
+      "annualDividend": 223.0,
+      "dividendYield": 0.93,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX AI전력핵심설비",
@@ -1598,7 +1869,8 @@
         }
       ],
       "annualDividend": 416.0,
-      "dividendYield": 0.42
+      "dividendYield": 0.42,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 코리아밸류업",
@@ -3842,7 +4114,8 @@
         }
       ],
       "annualDividend": 482.0,
-      "dividendYield": 3.3
+      "dividendYield": 3.3,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 미국S&P500선물(H)",
@@ -4262,7 +4535,8 @@
         }
       ],
       "annualDividend": 650.0,
-      "dividendYield": 2.1
+      "dividendYield": 2.1,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX TDF2030액티브",
@@ -6430,7 +6704,8 @@
         }
       ],
       "annualDividend": 490.0,
-      "dividendYield": 1.73
+      "dividendYield": 1.73,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 필수소비재",
@@ -8218,7 +8493,8 @@
         }
       ],
       "annualDividend": 673.0,
-      "dividendYield": 2.92
+      "dividendYield": 2.92,
+      "divFrequency": "분기배당"
     },
     {
       "name": "KODEX 미국S&P바이오(합성)",
