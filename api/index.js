@@ -428,7 +428,7 @@ app.post('/api/chat', async (req, res) => {
             body: JSON.stringify({
                 model: selectedModel.id,
                 messages: [{ role: 'system', content: systemContent }, ...recentMessages],
-                max_tokens: 4000,
+                max_tokens: 16000,
                 temperature: 0.7,
                 stream: useStream,
             }),

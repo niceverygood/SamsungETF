@@ -56,7 +56,7 @@ const AI_MODELS = {
         color: '#8B5CF6',
         description: '빠르고 정확한 분석',
         strength: '금융 약관이나 복잡한 ETF 구조를 빠르고 정확하게 분석',
-        maxTokens: 4000,
+        maxTokens: 16000,
         temperature: 0.7,
     },
     gpt: {
@@ -67,7 +67,7 @@ const AI_MODELS = {
         color: '#10B981',
         description: '데이터 처리 & 멀티모달',
         strength: '차트 분석이나 대량의 수익률 시뮬레이션 등 수치 중심 작업에서 최고 안정성',
-        maxTokens: 4000,
+        maxTokens: 16000,
         temperature: 0.6,
     },
     gemini: {
@@ -78,7 +78,7 @@ const AI_MODELS = {
         color: '#3B82F6',
         description: '초거대 컨텍스트 (1M+)',
         strength: '여러 ETF 투자설명서를 한꺼번에 읽고 비교 분석할 때 압도적',
-        maxTokens: 4000,
+        maxTokens: 16000,
         temperature: 0.7,
     }
 };
