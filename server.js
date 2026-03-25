@@ -29,6 +29,52 @@ try {
     console.error('FunETF 데이터 로드 실패:', e.message);
 }
 
+// ===== 분배금 실시간 수집 (캐시 1시간) =====
+let _divCache = {};
+let _divCacheTime = 0;
+const DIV_CACHE_TTL = 3600000;
+
+const DIV_ETF_MAP = {
+    '498400': { fundCd: 'K55105EG3659', itemId: 'KR7498400001', fid: '2ETFP4' },
+    '498410': { fundCd: 'K55105EF7263', itemId: 'KR7498410000', fid: '2ETFP5' },
+    '441640': { fundCd: 'K55105DW2744', itemId: 'KR7441640000', fid: '2ETFC1' },
+    '494300': { fundCd: 'K55105EE2919', itemId: 'KR7494300007', fid: '2ETFN1' },
+    '379800': { fundCd: 'K55105DF7322', itemId: 'KR7379800006', fid: '2ETFA1' },
+    '379810': { fundCd: 'K55105DF7272', itemId: 'KR7379810005', fid: '2ETFA2' },
+    '069500': { fundCd: 'KR5105352888', itemId: 'KR7069500007', fid: '2ETF01' },
+};
+
+async function enrichETFWithLiveDiv(etf) {
+    const info = DIV_ETF_MAP[etf.code];
+    if (!info) return;
+    if (_divCache[etf.code] && Date.now() - _divCacheTime < DIV_CACHE_TTL) {
+        applyDivData(etf, _divCache[etf.code]); return;
+    }
+    try {
+        const today = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const url = `https://www.funetf.co.kr/api/public/product/view/etfdividend?gijunYmd=${today}&jangYmd=${today}&itemId=${info.itemId}&fid=${info.fid}&fundCd=${info.fundCd}&repFundCd=${info.fundCd}&roleGroupType=ANONYMOUS&roleType=ROLE_ANONYMOUS`;
+        const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.funetf.co.kr/' } });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+            _divCache[etf.code] = data;
+            _divCacheTime = Date.now();
+            applyDivData(etf, data);
+        }
+    } catch (e) { /* skip */ }
+}
+
+function applyDivData(etf, divData) {
+    const sorted = divData.sort((a, b) => (b.gijunYmd || '').localeCompare(a.gijunYmd || ''));
+    const cutoff = new Date(Date.now() - 365 * 86400000).toISOString().slice(0, 10).replace(/-/g, '');
+    const recent12m = sorted.filter(d => d.gijunYmd >= cutoff);
+    const annualDiv = recent12m.reduce((sum, d) => sum + (d.divAmt || 0), 0);
+    etf.distributions = sorted.slice(0, 8).map(d => ({ date: d.gijunYmd, amount: d.divAmt, rate: d.divRt || 0, payDate: d.payDt || '' }));
+    etf.annualDividend = Math.round(annualDiv);
+    etf.dividendYield = etf.price > 0 ? Math.round(annualDiv / etf.price * 10000) / 100 : null;
+    etf.divFrequency = recent12m.length >= 10 ? '월배당' : (recent12m.length >= 3 ? '분기배당' : '연배당');
+}
+
 function getFunETFSummary(naverLive) {
     if (!FUNETF_DATA?.kodex_etfs) return '';
     const nav = naverLive || {};
@@ -697,6 +743,14 @@ app.post('/api/chat', async (req, res) => {
             await Promise.race([Promise.allSettled(naverFetches), new Promise(r => setTimeout(r, 4000))]);
         }
         const naverData = marketData?.naver || (Object.keys(liveNaver).length > 0 ? liveNaver : null);
+
+        // 분배금 관련 질문이면 실시간 수집
+        if (/분배|배당|인컴|월배당|분기배당/.test(lastUserMsg) && FUNETF_DATA?.kodex_etfs) {
+            const targets = FUNETF_DATA.kodex_etfs
+                .filter(e => e.name.includes('커버드콜') || e.name.includes('배당'))
+                .sort((a, b) => b.popularity - a.popularity).slice(0, 5);
+            await Promise.allSettled(targets.map(e => enrichETFWithLiveDiv(e)));
+        }
 
         let systemContent = SYSTEM_PROMPT;
         systemContent += getFunETFSummary(naverData);
