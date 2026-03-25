@@ -29,20 +29,24 @@ try {
     console.error('FunETF 데이터 로드 실패:', e.message);
 }
 
-function getFunETFSummary() {
+function getFunETFSummary(naverLive) {
     if (!FUNETF_DATA?.kodex_etfs) return '';
+    const naverByName = naverLive || {};
     const top20 = [...FUNETF_DATA.kodex_etfs]
         .sort((a, b) => b.popularity - a.popularity)
         .slice(0, 20);
-    let summary = '\n\n## FunETF 크롤링 데이터 (KODEX ETF 인기순 Top 20)\n';
-    summary += '| 순위 | ETF명 | 현재가(원) | 순자산(억원) | 1개월수익률 | 인기도 |\n|------|-------|-----------|------------|-----------|--------|\n';
+    let summary = '\n\n## KODEX ETF 데이터 (인기순 Top 20, 실시간 시세 반영)\n';
+    summary += '| 순위 | ETF명 | 현재가(원) | 등락률 | 순자산(억원) | 1개월수익률 | 인기도 |\n|------|-------|-----------|--------|------------|-----------|--------|\n';
     top20.forEach((etf, i) => {
-        const price = etf.price ? Number(etf.price).toLocaleString() : '-';
+        const live = naverByName[etf.name];
+        const price = live ? live.price : (etf.price ? Number(etf.price).toLocaleString() : '-');
+        const changeRate = live ? `${live.changeRate}%` : '-';
         const aum = etf.aum ? Math.round(etf.aum).toLocaleString() : '-';
         const ret1m = etf.return1m != null ? `${etf.return1m > 0 ? '+' : ''}${etf.return1m}%` : '-';
-        summary += `| ${i + 1} | ${etf.name} | ${price} | ${aum} | ${ret1m} | ${etf.popularity.toLocaleString()} |\n`;
+        summary += `| ${i + 1} | ${etf.name} | ${price} | ${changeRate} | ${aum} | ${ret1m} | ${etf.popularity.toLocaleString()} |\n`;
     });
     summary += `\n총 KODEX ETF: ${FUNETF_DATA.kodex_count || FUNETF_DATA.kodex_etfs.length}개 / 전체 시장 ETF: ${FUNETF_DATA.all_etf_count}개`;
+    summary += naverLive ? '\n※ 현재가는 네이버증권 실시간 시세 기준' : '\n※ 현재가는 크롤링 시점 기준 (장중 변동 가능)';
     return summary;
 }
 
@@ -350,6 +354,16 @@ const NAVER_ETF_CODES = {
     'KODEX 골드선물(H)': '132030',
     'KODEX 은선물(H)': '144600',
     'KODEX 삼성전자채권혼합': '292150',
+    'KODEX 200타겟위클리커버드콜': '498400',
+    'KODEX 미국S&P500': '379800',
+    'KODEX 금융고배당TOP10타겟위클리커버드콜': '498410',
+    'KODEX 미국우주항공': '495100',
+    'KODEX 미국배당커버드콜액티브': '490600',
+    'KODEX 미국나스닥100': '379810',
+    'KODEX 미국나스닥100데일리커버드콜OTM': '498580',
+    'KODEX AI전력핵심설비': '488420',
+    'KODEX 로봇액티브': '445290',
+    'KODEX 미국AI전력핵심인프라': '487230',
 };
 
 // ===== 야후파이낸스 주요 ETF 티커 매핑 =====
@@ -618,11 +632,33 @@ app.post('/api/chat', async (req, res) => {
         }
         console.log(`\n🎯 모델: "${lastUserMsg.substring(0, 30)}..." → ${model.icon} ${model.name}`);
 
-        // 시장 데이터가 있으면 시스템 프롬프트에 추가
+        // 네이버 실시간 시세 수집 (캐시 활용)
+        const liveNaver = {};
+        if (!marketData) {
+            const naverFetches = Object.entries(NAVER_ETF_CODES).map(async ([name, code]) => {
+                try {
+                    const r = await fetch(`https://m.stock.naver.com/api/stock/${code}/basic`, {
+                        headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36' }
+                    });
+                    if (r.ok) {
+                        const d = await r.json();
+                        liveNaver[name] = { code, price: d.closePrice || d.stockEndPrice, change: d.compareToPreviousClosePrice, changeRate: d.fluctuationsRatio, volume: d.accumulatedTradingVolume };
+                    }
+                } catch (e) { /* skip */ }
+            });
+            await Promise.race([Promise.allSettled(naverFetches), new Promise(r => setTimeout(r, 4000))]);
+        }
+        const naverData = marketData?.naver || (Object.keys(liveNaver).length > 0 ? liveNaver : null);
+
         let systemContent = SYSTEM_PROMPT;
-        // FunETF 크롤링 데이터 추가
-        systemContent += getFunETFSummary();
-        if (marketData) {
+        systemContent += getFunETFSummary(naverData);
+        if (naverData && Object.keys(naverData).length > 0) {
+            systemContent += '\n\n## 📊 실시간 시장 데이터 (방금 수집)\n';
+            systemContent += '| ETF | 현재가 | 등락률 |\n|-----|--------|--------|\n';
+            for (const [name, d] of Object.entries(naverData)) {
+                systemContent += `| ${name} | ${d.price} | ${d.changeRate}% |\n`;
+            }
+        } else if (marketData) {
             systemContent += `\n\n## 실시간 시장 데이터 (참고용)\n${JSON.stringify(marketData, null, 2)}`;
         }
 
