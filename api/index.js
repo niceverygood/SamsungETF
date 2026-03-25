@@ -25,22 +25,86 @@ try {
 
 function getFunETFSummary(naverLive) {
     if (!FUNETF_DATA?.kodex_etfs) return '';
-    const naverByName = naverLive || {};
-    const top20 = [...FUNETF_DATA.kodex_etfs]
-        .sort((a, b) => b.popularity - a.popularity)
-        .slice(0, 20);
+    const nav = naverLive || {};
+    const top20 = [...FUNETF_DATA.kodex_etfs].sort((a, b) => b.popularity - a.popularity).slice(0, 20);
     let s = '\n\n## KODEX ETF 데이터 (인기순 Top 20, 실시간 시세 반영)\n';
-    s += '| 순위 | ETF명 | 현재가(원) | 등락률 | 순자산(억원) | 1개월수익률 | 인기도 |\n|------|-------|-----------|--------|------------|-----------|--------|\n';
+    s += '| # | ETF명 | 현재가 | 등락률 | 순자산(억) | 보수 | 3개월 | 1년 |\n|---|-------|--------|--------|-----------|------|-------|------|\n';
     top20.forEach((etf, i) => {
-        const live = naverByName[etf.name];
+        const live = nav[etf.name];
         const price = live ? live.price : (etf.price ? Number(etf.price).toLocaleString() : '-');
-        const changeRate = live ? `${live.changeRate}%` : '-';
+        const chg = live ? `${live.changeRate}%` : '-';
         const aum = etf.aum ? Math.round(etf.aum).toLocaleString() : '-';
-        const ret1m = etf.return1m != null ? `${etf.return1m > 0 ? '+' : ''}${etf.return1m}%` : '-';
-        s += `| ${i + 1} | ${etf.name} | ${price} | ${changeRate} | ${aum} | ${ret1m} | ${etf.popularity.toLocaleString()} |\n`;
+        const fee = etf.fee != null ? `${etf.fee}%` : '-';
+        const r3 = etf.return3m != null ? `${etf.return3m > 0 ? '+' : ''}${etf.return3m}%` : '-';
+        const r1y = etf.return1y != null ? `${etf.return1y > 0 ? '+' : ''}${etf.return1y}%` : '-';
+        s += `| ${i + 1} | ${etf.name} | ${price} | ${chg} | ${aum} | ${fee} | ${r3} | ${r1y} |\n`;
     });
     s += `\n총 KODEX ETF: ${FUNETF_DATA.kodex_count || FUNETF_DATA.kodex_etfs.length}개 / 전체 시장 ETF: ${FUNETF_DATA.all_etf_count}개`;
-    s += naverLive ? '\n※ 현재가는 네이버증권 실시간 시세 기준' : '\n※ 현재가는 크롤링 시점 기준 (장중 변동 가능)';
+    s += naverLive ? '\n※ 현재가=네이버 실시간' : '\n※ 현재가=크롤링 시점';
+    return s;
+}
+
+function getRelevantETFData(userMessage, naverLive) {
+    if (!FUNETF_DATA?.kodex_etfs) return '';
+    const msg = userMessage.toLowerCase();
+    const nav = naverLive || {};
+
+    const matched = [];
+
+    // 1) 직접 이름 매칭
+    for (const etf of FUNETF_DATA.kodex_etfs) {
+        const name = etf.name.toLowerCase();
+        const shortName = name.replace('kodex ', '');
+        if (msg.includes(shortName) && shortName.length >= 2) matched.push(etf);
+    }
+
+    // 2) 카테고리/테마 키워드 매칭
+    const CATEGORY_KEYWORDS = {
+        '커버드콜': e => e.name.includes('커버드콜'),
+        '배당': e => e.name.includes('배당') || e.name.includes('고배당'),
+        '반도체': e => e.name.includes('반도체'),
+        '로봇': e => e.name.includes('로봇') || e.name.includes('휴머노이드'),
+        '우주': e => e.name.includes('우주'),
+        '2차전지': e => e.name.includes('2차전지') || e.name.includes('배터리'),
+        '채권': e => e.category === '채권' || e.name.includes('채권'),
+        '금': e => e.name.includes('골드') || e.name.includes('금선물'),
+        'ai': e => e.name.toLowerCase().includes('ai') || e.name.includes('인공지능'),
+        '레버리지': e => e.name.includes('레버리지'),
+        '인버스': e => e.name.includes('인버스'),
+        '미국': e => e.name.includes('미국'),
+        's&p': e => e.name.toLowerCase().includes('s&p') || e.name.includes('S&P'),
+        '나스닥': e => e.name.includes('나스닥'),
+    };
+
+    for (const [keyword, filter] of Object.entries(CATEGORY_KEYWORDS)) {
+        if (msg.includes(keyword)) {
+            const categoryETFs = FUNETF_DATA.kodex_etfs.filter(filter)
+                .sort((a, b) => b.popularity - a.popularity).slice(0, 5);
+            for (const e of categoryETFs) {
+                if (!matched.find(m => m.code === e.code)) matched.push(e);
+            }
+        }
+    }
+
+    if (matched.length === 0) return '';
+
+    const unique = matched.slice(0, 10);
+    let s = '\n\n## 🔍 질문 관련 KODEX ETF 상세 데이터\n';
+    for (const etf of unique) {
+        const live = nav[etf.name];
+        const price = live ? live.price : (etf.price ? Number(etf.price).toLocaleString() + '원' : '-');
+        const chg = live ? ` (${live.changeRate}%)` : '';
+        s += `\n### ${etf.name} (${etf.code})\n`;
+        s += `- 현재가: ${price}${chg}\n`;
+        s += `- 순자산: ${etf.aum ? Math.round(etf.aum).toLocaleString() + '억원' : '-'}\n`;
+        s += `- 총보수: ${etf.fee != null ? etf.fee + '%' : '-'}\n`;
+        s += `- 수익률: 1개월 ${etf.return1m ?? '-'}% / 3개월 ${etf.return3m ?? '-'}% / 6개월 ${etf.return6m ?? '-'}% / 1년 ${etf.return1y ?? '-'}%\n`;
+        s += `- 유형: ${etf.category}/${etf.subCategory} | ${etf.type} | 과세: ${etf.taxType || '-'}\n`;
+        s += `- 환헤지: ${etf.hedged ? '예(H)' : '아니오'}\n`;
+        if (etf.top3Holdings?.length) {
+            s += `- 상위 보유종목: ${etf.top3Holdings.map(h => `${h.name}(${h.weight}%)`).join(', ')}\n`;
+        }
+    }
     return s;
 }
 
@@ -388,9 +452,11 @@ app.post('/api/chat', async (req, res) => {
         const yahooCount = marketData.yahoo_kr.length + marketData.yahoo_us.length;
         console.log(`✅ 데이터 수집 완료: 네이버 ${naverCount}개, 야후 ${yahooCount}개`);
 
-        // ✅ 2단계: 시스템 프롬프트 구성 (크롤링 + 실시간 병합)
+        // ✅ 2단계: 시스템 프롬프트 구성 (크롤링 + 실시간 + 질문 맞춤)
+        const lastUserMsg = messages.filter(m => m.role === 'user').pop()?.content || '';
         let systemContent = SYSTEM_PROMPT;
         systemContent += getFunETFSummary(marketData.naver);
+        systemContent += getRelevantETFData(lastUserMsg, marketData.naver);
 
         systemContent += '\n\n## 📊 실시간 시장 데이터 (방금 수집, 응답에 적극 활용할 것)\n';
 
