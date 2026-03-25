@@ -50,10 +50,21 @@ async function sendMessage() {
     const typingEl = showTyping();
 
     try {
-        // Call AI API (async) - now returns {reply, modelUsed}
-        const result = await chatbot.generateResponse(text);
         removeTyping(typingEl);
-        addMessage(result.reply, 'bot', result.modelUsed);
+        const streamBubble = addMessage('', 'bot', { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude', icon: '🧠', color: '#8B5CF6' });
+        const contentEl = streamBubble?.querySelector('.bubble-content');
+
+        const result = await chatbot.generateResponse(text, (chunk, fullText) => {
+            if (contentEl) {
+                contentEl.innerHTML = fullText;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+
+        if (contentEl && result.reply) {
+            contentEl.innerHTML = result.reply;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
     } catch (error) {
         removeTyping(typingEl);
         addMessage(`<p>⚠️ 오류가 발생했습니다: ${error.message}</p>`, 'bot');
@@ -81,29 +92,29 @@ function addMessage(content, type, modelUsed) {
         ? `<p>${escapeHtml(content)}</p>`
         : content;
 
-    // 모델 배지 HTML
     let modelBadgeHtml = '';
     if (type === 'bot' && modelUsed) {
         const colors = MODEL_COLORS[modelUsed.key] || MODEL_COLORS.claude;
-        const routeLabel = modelUsed.wasAutoRouted ? '자동 선택' : '수동 지정';
+        const routeLabel = modelUsed.wasAutoRouted ? '자동 선택' : '';
         modelBadgeHtml = `
         <div class="model-badge" style="background: ${colors.bg}; border-color: ${colors.border};">
             <span class="model-badge-icon">${modelUsed.icon}</span>
             <span class="model-badge-name" style="color: ${colors.text};">${modelUsed.name}</span>
-            <span class="model-badge-route">${routeLabel}</span>
+            ${routeLabel ? `<span class="model-badge-route">${routeLabel}</span>` : ''}
         </div>`;
     }
 
     messageDiv.innerHTML = `
     <div class="message-avatar">${avatarSvg}</div>
     <div class="message-content">
-      <div class="message-bubble">${bubbleContent}</div>
+      <div class="message-bubble"><div class="bubble-content">${bubbleContent}</div></div>
       ${modelBadgeHtml}
     </div>
   `;
 
     chatMessages.appendChild(messageDiv);
     scrollToBottom();
+    return messageDiv;
 }
 
 function showTyping() {

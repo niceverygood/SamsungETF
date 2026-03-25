@@ -49,12 +49,19 @@ const NAVER_ETF_CODES = {
     'KODEX 은선물(H)': '144600', 'KODEX 삼성전자채권혼합': '292150',
 };
 
-// ===== 실시간 시장 데이터 수집 함수 =====
+// ===== 시장 데이터 캐시 (60초 TTL) =====
+let _marketCache = null;
+let _marketCacheTime = 0;
+const MARKET_CACHE_TTL = 60000;
+
 async function fetchAllMarketData() {
+    if (_marketCache && Date.now() - _marketCacheTime < MARKET_CACHE_TTL) {
+        return _marketCache;
+    }
+
     const results = { naver: {}, yahoo_kr: [], yahoo_us: [], kospi: null, timestamp: new Date().toISOString() };
 
     try {
-        // 1. 네이버 증권 - 주요 KODEX ETF 실시간 시세
         const naverPromises = Object.entries(NAVER_ETF_CODES).map(async ([name, code]) => {
             try {
                 const res = await fetch(`https://m.stock.naver.com/api/stock/${code}/basic`, {
@@ -71,14 +78,12 @@ async function fetchAllMarketData() {
             } catch (e) { /* skip */ }
         });
 
-        // 2. 네이버 증권 - KOSPI 지수
         const kospiPromise = fetch('https://m.stock.naver.com/api/index/KOSPI/basic', {
             headers: { 'User-Agent': 'Mozilla/5.0' }
         }).then(r => r.json()).then(d => {
             results.kospi = { price: d.closePrice, change: d.compareToPreviousClosePrice, changeRate: d.fluctuationsRatio };
         }).catch(() => {});
 
-        // 3. 야후파이낸스 - 한국 ETF
         const yahooKrPromise = fetch('https://query1.finance.yahoo.com/v7/finance/quote?symbols=069500.KS,122630.KS,091160.KS,305720.KS,379800.KS,379810.KS', {
             headers: { 'User-Agent': 'Mozilla/5.0' }
         }).then(r => r.json()).then(d => {
@@ -90,7 +95,6 @@ async function fetchAllMarketData() {
             }));
         }).catch(() => {});
 
-        // 4. 야후파이낸스 - 미국 주요 지수 + ETF
         const yahooUsPromise = fetch('https://query1.finance.yahoo.com/v7/finance/quote?symbols=%5EGSPC,%5EIXIC,%5EDJI,SPY,QQQ', {
             headers: { 'User-Agent': 'Mozilla/5.0' }
         }).then(r => r.json()).then(d => {
@@ -102,16 +106,17 @@ async function fetchAllMarketData() {
             }));
         }).catch(() => {});
 
-        // 모든 API 병렬 호출 (최대 8초 대기)
         await Promise.race([
             Promise.allSettled([...naverPromises, kospiPromise, yahooKrPromise, yahooUsPromise]),
-            new Promise(resolve => setTimeout(resolve, 8000))
+            new Promise(resolve => setTimeout(resolve, 4000))
         ]);
 
     } catch (e) {
         console.error('시장 데이터 수집 오류:', e.message);
     }
 
+    _marketCache = results;
+    _marketCacheTime = Date.now();
     return results;
 }
 
@@ -399,12 +404,12 @@ app.post('/api/chat', async (req, res) => {
 
         systemContent += `\n데이터 수집 시각: ${marketData.timestamp}\n`;
 
-        // ✅ 3단계: Claude Opus 4.6 호출
-        console.log('🧠 Claude 4.6 Opus 호출 중...');
+        // ✅ 3단계: Claude Sonnet 4 호출 (Opus 대비 3~5배 빠름, 품질 우수)
         const recentMessages = messages.slice(-10);
+        const useStream = req.query.stream === 'true' || req.body.stream === true;
 
         const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 55000);
+        const timeout = setTimeout(() => controller.abort(), 45000);
 
         const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
@@ -415,10 +420,11 @@ app.post('/api/chat', async (req, res) => {
                 'X-Title': 'FunETF AI Chatbot'
             },
             body: JSON.stringify({
-                model: 'anthropic/claude-opus-4.6',
+                model: 'anthropic/claude-sonnet-4',
                 messages: [{ role: 'system', content: systemContent }, ...recentMessages],
                 max_tokens: 4000,
                 temperature: 0.7,
+                stream: useStream,
             }),
             signal: controller.signal
         });
@@ -430,6 +436,43 @@ app.post('/api/chat', async (req, res) => {
             throw new Error(`OpenRouter API error ${response.status}: ${errText}`);
         }
 
+        // 스트리밍 모드
+        if (useStream) {
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullReply = '';
+
+            try {
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n').filter(l => l.startsWith('data: '));
+                    for (const line of lines) {
+                        const jsonStr = line.slice(6);
+                        if (jsonStr === '[DONE]') continue;
+                        try {
+                            const parsed = JSON.parse(jsonStr);
+                            const delta = parsed.choices?.[0]?.delta?.content || '';
+                            if (delta) {
+                                fullReply += delta;
+                                res.write(`data: ${JSON.stringify({ content: delta })}\n\n`);
+                            }
+                        } catch (e) { /* skip parse errors */ }
+                    }
+                }
+            } catch (e) { /* stream ended */ }
+
+            res.write(`data: ${JSON.stringify({ done: true, fullReply, marketDataUsed: { naverETFs: naverCount, yahooQuotes: yahooCount, hasFunETF: !!FUNETF_DATA } })}\n\n`);
+            res.end();
+            return;
+        }
+
+        // 일반 모드
         const data = await response.json();
         const reply = data.choices?.[0]?.message?.content;
 
@@ -437,14 +480,12 @@ app.post('/api/chat', async (req, res) => {
             throw new Error('Claude가 빈 응답을 반환했습니다.');
         }
 
-        console.log(`🧠 응답 완료 (${data.usage?.completion_tokens || '?'} tokens)`);
-
         res.json({
             success: true,
             reply,
             modelUsed: {
-                key: 'claude', name: 'Claude 4.6 Opus', shortName: 'Claude',
-                icon: '🧠', color: '#8B5CF6', description: '독보적인 논리력 & 문장력',
+                key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude',
+                icon: '🧠', color: '#8B5CF6', description: '빠르고 정확한 분석',
                 wasAutoRouted: false,
             },
             usage: data.usage,

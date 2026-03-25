@@ -49,13 +49,13 @@ function getFunETFSummary() {
 // ===== Tri-Model Configuration =====
 const AI_MODELS = {
     claude: {
-        id: 'anthropic/claude-opus-4.6',
-        name: 'Claude 4.6 Opus',
+        id: 'anthropic/claude-sonnet-4',
+        name: 'Claude Sonnet 4',
         shortName: 'Claude',
         icon: '🧠',
         color: '#8B5CF6',
-        description: '독보적인 논리력 & 문장력',
-        strength: '금융 약관이나 복잡한 ETF 구조를 설명할 때 가장 인간답고 정확한 분석',
+        description: '빠르고 정확한 분석',
+        strength: '금융 약관이나 복잡한 ETF 구조를 빠르고 정확하게 분석',
         maxTokens: 4000,
         temperature: 0.7,
     },
