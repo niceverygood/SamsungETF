@@ -8,21 +8,20 @@ class KODEXChatbot {
         this.conversationHistory = [];
     }
 
-    async generateResponse(userMessage, onChunk) {
+    async generateResponse(userMessage, onChunk, modelOverride) {
         this.conversationHistory.push({ role: 'user', content: userMessage });
         const recentMessages = this.conversationHistory.slice(-10);
+        const model = modelOverride || 'sonnet';
 
-        // 스트리밍 모드 (onChunk 콜백이 있으면)
         if (onChunk) {
-            return this._streamResponse(recentMessages, onChunk);
+            return this._streamResponse(recentMessages, onChunk, model);
         }
 
-        // 일반 모드 (폴백)
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: recentMessages })
+                body: JSON.stringify({ messages: recentMessages, model })
             });
 
             const data = await response.json();
@@ -44,12 +43,12 @@ class KODEXChatbot {
         }
     }
 
-    async _streamResponse(recentMessages, onChunk) {
+    async _streamResponse(recentMessages, onChunk, model) {
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: recentMessages, stream: true })
+                body: JSON.stringify({ messages: recentMessages, stream: true, model })
             });
 
             if (!response.ok) {

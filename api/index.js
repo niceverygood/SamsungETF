@@ -356,10 +356,16 @@ app.get('/api/market-overview', async (req, res) => {
 // ===== 메인 채팅 API (Claude Opus 4.6 + 실시간 데이터) =====
 app.post('/api/chat', async (req, res) => {
     try {
-        const { messages } = req.body;
+        const { messages, model: modelChoice } = req.body;
         if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({ success: false, error: 'messages 배열이 필요합니다.' });
         }
+
+        const MODEL_MAP = {
+            sonnet: { id: 'anthropic/claude-sonnet-4', name: 'Claude Sonnet 4', icon: '⚡' },
+            opus: { id: 'anthropic/claude-opus-4.6', name: 'Claude Opus 4.6', icon: '🧠' },
+        };
+        const selectedModel = MODEL_MAP[modelChoice] || MODEL_MAP.sonnet;
 
         // ✅ 1단계: 네이버증권 + 야후파이낸스 실시간 데이터 수집
         console.log('📊 실시간 시장 데이터 수집 시작...');
@@ -420,7 +426,7 @@ app.post('/api/chat', async (req, res) => {
                 'X-Title': 'FunETF AI Chatbot'
             },
             body: JSON.stringify({
-                model: 'anthropic/claude-sonnet-4',
+                model: selectedModel.id,
                 messages: [{ role: 'system', content: systemContent }, ...recentMessages],
                 max_tokens: 4000,
                 temperature: 0.7,
@@ -484,8 +490,8 @@ app.post('/api/chat', async (req, res) => {
             success: true,
             reply,
             modelUsed: {
-                key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude',
-                icon: '🧠', color: '#8B5CF6', description: '빠르고 정확한 분석',
+                key: 'claude', name: selectedModel.name, shortName: selectedModel.name,
+                icon: selectedModel.icon, color: '#8B5CF6',
                 wasAutoRouted: false,
             },
             usage: data.usage,

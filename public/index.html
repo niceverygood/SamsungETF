@@ -196,8 +196,16 @@
                     </div>
                 </div>
 
-                <!-- Chat Input -->
+                <!-- Model Select + Chat Input -->
                 <div class="chat-input-area">
+                    <div class="model-select-bar">
+                        <button class="model-btn active" id="btnSonnet" onclick="selectModel('sonnet')">
+                            ⚡ Sonnet <span class="model-btn-tag">빠른 답변</span>
+                        </button>
+                        <button class="model-btn" id="btnOpus" onclick="selectModel('opus')">
+                            🧠 Opus <span class="model-btn-tag">깊은 분석</span>
+                        </button>
+                    </div>
                     <div class="chat-input-container">
                         <textarea id="chatInput" class="chat-input" placeholder="KODEX ETF에 대해 궁금한 것을 물어보세요..." rows="1"
                             onkeydown="handleKeyDown(event)" oninput="autoResize(this)"></textarea>

@@ -33,6 +33,13 @@ function handleKeyDown(e) {
 }
 
 let isProcessing = false;
+let selectedModel = 'sonnet';
+
+function selectModel(model) {
+    selectedModel = model;
+    document.getElementById('btnSonnet').classList.toggle('active', model === 'sonnet');
+    document.getElementById('btnOpus').classList.toggle('active', model === 'opus');
+}
 
 async function sendMessage() {
     const text = chatInput.value.trim();
@@ -51,7 +58,10 @@ async function sendMessage() {
 
     try {
         removeTyping(typingEl);
-        const streamBubble = addMessage('', 'bot', { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Claude', icon: '🧠', color: '#8B5CF6' });
+        const modelInfo = selectedModel === 'opus'
+            ? { key: 'claude', name: 'Claude Opus 4.6', shortName: 'Opus', icon: '🧠', color: '#8B5CF6' }
+            : { key: 'claude', name: 'Claude Sonnet 4', shortName: 'Sonnet', icon: '⚡', color: '#8B5CF6' };
+        const streamBubble = addMessage('', 'bot', modelInfo);
         const contentEl = streamBubble?.querySelector('.bubble-content');
 
         const result = await chatbot.generateResponse(text, (chunk, fullText) => {
@@ -59,7 +69,7 @@ async function sendMessage() {
                 contentEl.innerHTML = fullText;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
-        });
+        }, selectedModel);
 
         if (contentEl && result.reply) {
             contentEl.innerHTML = result.reply;
