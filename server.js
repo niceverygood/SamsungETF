@@ -593,22 +593,30 @@ app.get('/api/market-overview', async (req, res) => {
 // 4. OpenRouter AI 챗봇 API (Tri-Model 지원)
 app.post('/api/chat', async (req, res) => {
     try {
-        const { messages, marketData, modelKey } = req.body;
+        const { messages, marketData, modelKey, model: modelChoice, stream: useStream } = req.body;
 
         if (!messages || !Array.isArray(messages)) {
             return res.status(400).json({ success: false, error: 'messages 배열이 필요합니다.' });
         }
 
-        // 모델 선택: 수동 지정 또는 스마트 라우팅
+        // sonnet/opus 선택 지원
+        const QUICK_MODELS = {
+            sonnet: { id: 'anthropic/claude-sonnet-4', name: 'FunETF AI ⚡', icon: '⚡', maxTokens: 16000, temperature: 0.7 },
+            opus: { id: 'anthropic/claude-opus-4.6', name: 'FunETF AI 🧠', icon: '🧠', maxTokens: 16000, temperature: 0.7 },
+        };
+
         const lastUserMsg = messages.filter(m => m.role === 'user').pop()?.content || '';
-        let selectedKey = modelKey;
-
-        if (!selectedKey || selectedKey === 'auto') {
-            selectedKey = smartRouteModel(lastUserMsg);
+        let model;
+        if (modelChoice && QUICK_MODELS[modelChoice]) {
+            model = QUICK_MODELS[modelChoice];
+        } else {
+            let selectedKey = modelKey;
+            if (!selectedKey || selectedKey === 'auto') {
+                selectedKey = smartRouteModel(lastUserMsg);
+            }
+            model = AI_MODELS[selectedKey] || AI_MODELS.claude;
         }
-
-        const model = AI_MODELS[selectedKey] || AI_MODELS.claude;
-        console.log(`\n🎯 모델 라우팅: "${lastUserMsg.substring(0, 30)}..." → ${model.icon} ${model.name}`);
+        console.log(`\n🎯 모델: "${lastUserMsg.substring(0, 30)}..." → ${model.icon} ${model.name}`);
 
         // 시장 데이터가 있으면 시스템 프롬프트에 추가
         let systemContent = SYSTEM_PROMPT;
@@ -634,12 +642,42 @@ app.post('/api/chat', async (req, res) => {
                 ],
                 max_tokens: model.maxTokens,
                 temperature: model.temperature,
+                stream: !!useStream,
             })
         });
 
         if (!response.ok) {
             const errText = await response.text();
             throw new Error(`OpenRouter API error ${response.status}: ${errText}`);
+        }
+
+        if (useStream) {
+            res.setHeader('Content-Type', 'text/event-stream');
+            res.setHeader('Cache-Control', 'no-cache');
+            res.setHeader('Connection', 'keep-alive');
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullReply = '';
+            try {
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    const chunk = decoder.decode(value, { stream: true });
+                    const lines = chunk.split('\n').filter(l => l.startsWith('data: '));
+                    for (const line of lines) {
+                        const jsonStr = line.slice(6);
+                        if (jsonStr === '[DONE]') continue;
+                        try {
+                            const parsed = JSON.parse(jsonStr);
+                            const delta = parsed.choices?.[0]?.delta?.content || '';
+                            if (delta) { fullReply += delta; res.write(`data: ${JSON.stringify({ content: delta })}\n\n`); }
+                        } catch (e) { /* skip */ }
+                    }
+                }
+            } catch (e) { /* stream ended */ }
+            res.write(`data: ${JSON.stringify({ done: true, fullReply })}\n\n`);
+            res.end();
+            return;
         }
 
         const data = await response.json();
@@ -651,13 +689,12 @@ app.post('/api/chat', async (req, res) => {
             success: true,
             reply,
             modelUsed: {
-                key: selectedKey,
+                key: modelChoice || 'claude',
                 name: model.name,
-                shortName: model.shortName,
+                shortName: model.name,
                 icon: model.icon,
-                color: model.color,
-                description: model.description,
-                wasAutoRouted: !modelKey || modelKey === 'auto',
+                color: '#8B5CF6',
+                wasAutoRouted: false,
             },
             usage: data.usage
         });

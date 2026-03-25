@@ -1,6 +1,6 @@
 /**
  * KODEX ETF AI 챗봇 엔진
- * Claude 4.6 Opus + 네이버증권 + 야후파이낸스 실시간 데이터
+ * Claude Sonnet 4 + 네이버증권 + 야후파이낸스 실시간 데이터 + 스트리밍
  */
 
 class KODEXChatbot {
@@ -8,38 +8,84 @@ class KODEXChatbot {
         this.conversationHistory = [];
     }
 
-    // AI 응답 생성 (서버에서 실시간 데이터 수집 후 Claude 호출)
-    async generateResponse(userMessage) {
+    async generateResponse(userMessage, onChunk, modelOverride) {
         this.conversationHistory.push({ role: 'user', content: userMessage });
-
-        // 최근 10개 메시지만 전송
         const recentMessages = this.conversationHistory.slice(-10);
+        const model = modelOverride || 'sonnet';
+
+        if (onChunk) {
+            return this._streamResponse(recentMessages, onChunk, model);
+        }
 
         try {
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ messages: recentMessages })
+                body: JSON.stringify({ messages: recentMessages, model })
             });
 
             const data = await response.json();
 
             if (data.success && data.reply) {
                 this.conversationHistory.push({ role: 'assistant', content: data.reply });
-
-                if (data.marketDataUsed) {
-                    console.log(`📊 실시간 데이터: 네이버 ${data.marketDataUsed.naverETFs}개, 야후 ${data.marketDataUsed.yahooQuotes}개`);
-                }
-
-                return {
-                    reply: data.reply,
-                    modelUsed: data.modelUsed
-                };
+                return { reply: data.reply, modelUsed: data.modelUsed };
             } else {
                 throw new Error(data.error || '응답 생성 실패');
             }
         } catch (error) {
             console.error('AI 응답 오류:', error);
+            return {
+                reply: `<p>⚠️ 죄송합니다. AI 연결에 일시적인 문제가 발생했습니다.</p>
+<p><small>오류: ${error.message}</small></p>
+<p>잠시 후 다시 시도해주세요.</p>`,
+                modelUsed: null
+            };
+        }
+    }
+
+    async _streamResponse(recentMessages, onChunk, model) {
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ messages: recentMessages, stream: true, model })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.error || `서버 오류 ${response.status}`);
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullReply = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                const text = decoder.decode(value, { stream: true });
+                const lines = text.split('\n').filter(l => l.startsWith('data: '));
+
+                for (const line of lines) {
+                    try {
+                        const parsed = JSON.parse(line.slice(6));
+                        if (parsed.content) {
+                            fullReply += parsed.content;
+                            onChunk(parsed.content, fullReply);
+                        }
+                        if (parsed.done) {
+                            this.conversationHistory.push({ role: 'assistant', content: fullReply });
+                            return { reply: fullReply, modelUsed: { key: 'claude', name: 'FunETF AI', shortName: 'FunETF AI', icon: '🧠', color: '#8B5CF6' } };
+                        }
+                    } catch (e) { /* skip parse errors */ }
+                }
+            }
+
+            this.conversationHistory.push({ role: 'assistant', content: fullReply });
+            return { reply: fullReply, modelUsed: { key: 'claude', name: 'FunETF AI', shortName: 'FunETF AI', icon: '🧠', color: '#8B5CF6' } };
+        } catch (error) {
+            console.error('스트리밍 오류:', error);
             return {
                 reply: `<p>⚠️ 죄송합니다. AI 연결에 일시적인 문제가 발생했습니다.</p>
 <p><small>오류: ${error.message}</small></p>
