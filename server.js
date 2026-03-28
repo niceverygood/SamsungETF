@@ -780,6 +780,19 @@ app.post('/api/chat', async (req, res) => {
         }
 
         let systemContent = SYSTEM_PROMPT;
+
+        const isPBMode = /\[고객 프로필\]/.test(lastUserMsg);
+        if (isPBMode) {
+            systemContent += `\n\n## PB 셀링 어시스턴트 모드 활성화
+당신은 지금 증권사/은행 PB를 지원하는 영업 도구입니다.
+추가 규칙:
+- 모든 응답 하단에 <div class="pb-ment"><div class="pb-ment-label">고객 설명 멘트</div>PB가 고객에게 바로 읽어줄 수 있는 1~3문장</div> 를 포함
+- KODEX 강점을 객관적 데이터로 제시, 경쟁사 폄하 금지
+- 불완전판매 방지 리스크 고지 필수
+- 고객 프로필에 맞게 개인화
+- "수익을 보장" 같은 단정적 표현 절대 금지`;
+        }
+
         systemContent += getFunETFSummary(naverData);
         systemContent += getRelevantETFData(lastUserMsg, naverData);
         if (naverData && Object.keys(naverData).length > 0) {
