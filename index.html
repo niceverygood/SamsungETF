@@ -37,7 +37,10 @@
             <nav class="header-nav">
                 <a href="https://www.funetf.co.kr/" target="_blank" class="nav-link">FunETF 홈</a>
                 <a href="#features" class="nav-link">기능 소개</a>
-                <div class="header-badge">FunETF AI</div>
+                <div class="mode-toggle">
+                    <button class="mode-btn active" id="modeNormal" onclick="switchMode('normal')">일반 모드</button>
+                    <button class="mode-btn" id="modePB" onclick="switchMode('pb')">PB 셀링 모드</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -126,6 +129,61 @@
         <div class="section-container">
             <h2 class="section-title">KODEX ETF <span class="gradient-text">FunETF AI 챗봇</span></h2>
             <p class="section-subtitle">FunETF AI가 실시간 시장 데이터를 분석하여 답변합니다.</p>
+
+            <div class="client-profile-panel" id="clientProfilePanel" style="display:none;">
+                <div class="profile-header" onclick="toggleProfilePanel()">
+                    <span>👤 고객 프로필</span>
+                    <span class="profile-toggle-icon" id="profileToggleIcon">▼</span>
+                </div>
+                <div class="profile-body" id="profileBody">
+                    <div class="profile-grid">
+                        <div class="profile-field">
+                            <label>나이</label>
+                            <input type="number" id="clientAge" placeholder="60" />
+                        </div>
+                        <div class="profile-field">
+                            <label>투자성향</label>
+                            <select id="clientInvestType">
+                                <option value="">선택</option>
+                                <option value="안정형">안정형</option>
+                                <option value="안정추구형">안정추구형</option>
+                                <option value="위험중립형">위험중립형</option>
+                                <option value="적극투자형">적극투자형</option>
+                                <option value="공격투자형">공격투자형</option>
+                            </select>
+                        </div>
+                        <div class="profile-field">
+                            <label>계좌유형</label>
+                            <select id="clientAccountType">
+                                <option value="">선택</option>
+                                <option value="ISA">ISA</option>
+                                <option value="연금저축">연금저축</option>
+                                <option value="IRP">IRP</option>
+                                <option value="일반">일반 위탁</option>
+                            </select>
+                        </div>
+                        <div class="profile-field">
+                            <label>월 투자금</label>
+                            <input type="number" id="clientBudget" placeholder="100" />
+                            <span class="field-unit">만원</span>
+                        </div>
+                        <div class="profile-field">
+                            <label>투자목적</label>
+                            <select id="clientGoal">
+                                <option value="">선택</option>
+                                <option value="월수입">월수입(인컴)</option>
+                                <option value="자산증식">자산증식</option>
+                                <option value="노후준비">노후준비</option>
+                                <option value="단기차익">단기차익</option>
+                            </select>
+                        </div>
+                        <div class="profile-field">
+                            <label>보유 ETF</label>
+                            <input type="text" id="clientExistingETF" placeholder="예: KODEX 200" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="chat-container" id="chatContainer">
                 <!-- Chat Header -->

@@ -1163,6 +1163,223 @@ body {
   background: #EF4444 !important;
 }
 
+/* ===== PB Selling Mode ===== */
+.mode-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+}
+
+.mode-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+}
+
+.mode-btn.active {
+  background: var(--samsung-blue);
+  color: white;
+  font-weight: 600;
+}
+
+.mode-btn:hover:not(.active) {
+  background: rgba(255,255,255,0.05);
+}
+
+/* PB Mode Body */
+body.pb-mode .hero { display: none; }
+body.pb-mode .features { display: none; }
+body.pb-mode .chat-section { padding-top: 100px; }
+body.pb-mode .section-title .gradient-text { color: #0F6FDE; }
+
+/* Client Profile Panel */
+.client-profile-panel {
+  max-width: 900px;
+  margin: 0 auto 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+}
+
+.profile-header:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.profile-toggle-icon {
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+
+.profile-toggle-icon.collapsed {
+  transform: rotate(-90deg);
+}
+
+.profile-body {
+  padding: 16px 20px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.profile-field label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.profile-field input,
+.profile-field select {
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.profile-field input:focus,
+.profile-field select:focus {
+  border-color: var(--samsung-blue-light);
+}
+
+.profile-field .field-unit {
+  position: absolute;
+  right: 10px;
+  bottom: 9px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* PB Mode Header Override */
+body.pb-mode .header {
+  background: linear-gradient(180deg, #0a1628 0%, #0d1f3c 100%);
+  border-bottom-color: #1a3a6a;
+}
+
+body.pb-mode .header-badge-pb {
+  background: linear-gradient(135deg, #0F6FDE, #1428A0);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Result Cards */
+.result-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.result-card-header {
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #0d1f3c, #1a2d50);
+  border-bottom: 1px solid var(--border-color);
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-card-body {
+  padding: 16px 18px;
+}
+
+.result-card-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.result-card-body table td {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 13px;
+}
+
+.result-card-body table td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.result-card-footer {
+  padding: 12px 18px;
+  background: rgba(15, 111, 222, 0.08);
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.pb-ment {
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(15, 111, 222, 0.1);
+  border-left: 3px solid #0F6FDE;
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.pb-ment-label {
+  font-weight: 600;
+  color: #0F6FDE;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* Mobile responsive for profile grid */
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .header-nav .nav-link {

@@ -540,6 +540,95 @@ app.get('/api/market-overview', async (req, res) => {
     } catch (error) { res.json({ success: false, error: error.message }); }
 });
 
+// ===== 커버드콜 월수입 계산기 API =====
+app.post('/api/calculate/covered-call-income', (req, res) => {
+    const { etfCode, investmentAmount, accountType } = req.body;
+    if (!investmentAmount) return res.json({ success: false, error: '투자금액이 필요합니다.' });
+    
+    const etf = FUNETF_DATA?.kodex_etfs?.find(e => 
+        e.code === etfCode || e.name.includes(etfCode || '200타겟위클리')
+    );
+    
+    if (!etf) return res.json({ success: false, error: 'ETF를 찾을 수 없습니다.' });
+    
+    const price = etf.price || 10000;
+    const annualDiv = etf.annualDividend || 0;
+    const divYield = etf.dividendYield || 0;
+    const isKorStock = etf.category === '국내주식';
+    
+    const monthlyDivBeforeTax = Math.round(investmentAmount * (divYield / 100) / 12);
+    
+    const optionPremiumRatio = isKorStock ? 0.65 : 0;
+    const taxableAmount = monthlyDivBeforeTax * (1 - optionPremiumRatio);
+    const nonTaxableAmount = monthlyDivBeforeTax * optionPremiumRatio;
+    
+    let tax = 0;
+    let accountLabel = accountType || '일반';
+    const annualDiv12 = monthlyDivBeforeTax * 12;
+    
+    switch (accountType) {
+        case 'ISA':
+            const isaExempt = Math.min(annualDiv12, 2000000);
+            const isaExcess = Math.max(annualDiv12 - 2000000, 0);
+            tax = Math.round((isaExcess * 0.099) / 12);
+            break;
+        case '연금저축':
+        case 'IRP':
+            tax = 0;
+            break;
+        default:
+            tax = Math.round(taxableAmount * 0.154);
+    }
+    
+    const monthlyAfterTax = monthlyDivBeforeTax - tax;
+    
+    const comparisons = ['ISA', '연금저축', '일반'].map(acct => {
+        let t = 0;
+        if (acct === 'ISA') {
+            const ex = Math.max(annualDiv12 - 2000000, 0);
+            t = Math.round((ex * 0.099) / 12);
+        } else if (acct === '연금저축') {
+            t = 0;
+        } else {
+            t = Math.round(taxableAmount * 0.154);
+        }
+        return { account: acct, beforeTax: monthlyDivBeforeTax, tax: t, afterTax: monthlyDivBeforeTax - t };
+    });
+    
+    res.json({
+        success: true,
+        data: {
+            etfName: etf.name,
+            etfCode: etf.code,
+            investmentAmount,
+            accountType: accountLabel,
+            price,
+            shares: Math.floor(investmentAmount / price),
+            divYield,
+            isKorStock,
+            monthly: {
+                beforeTax: monthlyDivBeforeTax,
+                optionPremium: isKorStock ? nonTaxableAmount : 0,
+                taxable: isKorStock ? taxableAmount : monthlyDivBeforeTax,
+                tax,
+                afterTax: monthlyAfterTax,
+            },
+            annual: {
+                beforeTax: monthlyDivBeforeTax * 12,
+                afterTax: monthlyAfterTax * 12,
+            },
+            comparisons,
+            warnings: [
+                '분배금은 확정 수입이 아니며 변동될 수 있습니다',
+                isKorStock ? '옵션프리미엄 비과세는 현행 세법 기준이며 변경 가능합니다' : '',
+                '투자원금 손실이 발생할 수 있습니다',
+                annualDiv12 > 10000000 ? '⚠️ 금융소득 연 1,000만원 초과 시 건보료 피부양자 탈락 가능' : '',
+                annualDiv12 > 20000000 ? '⚠️ 금융소득 연 2,000만원 초과 시 금융소득종합과세 대상' : '',
+            ].filter(Boolean),
+        }
+    });
+});
+
 // ===== 메인 채팅 API (Claude Opus 4.6 + 실시간 데이터) =====
 app.post('/api/chat', async (req, res) => {
     try {
@@ -583,6 +672,22 @@ app.post('/api/chat', async (req, res) => {
         }
 
         let systemContent = SYSTEM_PROMPT;
+
+        // PB 모드 감지: 고객 프로필이 포함된 질문
+        const isPBMode = /\[고객 프로필\]/.test(lastUserMsg);
+        if (isPBMode) {
+            systemContent += `\n\n## PB 셀링 어시스턴트 모드 활성화
+당신은 지금 증권사/은행 PB(Private Banker)를 지원하는 영업 도구입니다.
+
+추가 규칙:
+- 모든 응답 하단에 <div class="pb-ment"><div class="pb-ment-label">고객 설명 멘트</div>PB가 고객에게 바로 읽어줄 수 있는 1~3문장</div> 를 포함
+- KODEX의 강점을 객관적 데이터 기반으로 제시 (경쟁사 폄하 금지)
+- 불완전판매 방지를 위해 리스크 고지 필수
+- 고객 프로필이 있으면 해당 고객에 맞게 개인화
+- 계좌유형이 명시되면 해당 계좌의 세금 구조에 맞게 계산
+- "수익을 보장" 같은 단정적 표현 절대 금지`;
+        }
+
         systemContent += getFunETFSummary(marketData.naver);
         systemContent += getRelevantETFData(lastUserMsg, marketData.naver);
 

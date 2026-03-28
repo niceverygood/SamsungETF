@@ -15,6 +15,90 @@ const MODEL_COLORS = {
     gemini: { bg: 'rgba(59, 130, 246, 0.15)', border: 'rgba(59, 130, 246, 0.4)', text: '#60A5FA' }
 };
 
+// ===== PB Selling Mode =====
+let currentMode = 'normal';
+
+const PB_QUICK_ACTIONS = [
+    { icon: "💰", label: "커버드콜 월수입 계산", prompt: "고객이 커버드콜 ETF에 관심 있습니다. 투자금 1억원, ISA 계좌 기준으로 월수입 시뮬레이션을 해주세요." },
+    { icon: "⚔️", label: "경쟁사 ETF 비교", prompt: "KODEX 미국S&P500과 경쟁사(TIGER/ACE) S&P500 ETF를 비교해주세요. PB 멘트도 포함해주세요." },
+    { icon: "🏦", label: "계좌별 세금 비교", prompt: "KODEX 200타겟위클리커버드콜을 ISA, 연금저축, 일반계좌에 각각 5000만원 투자할 때 세후 수입 차이를 비교해주세요." },
+    { icon: "📊", label: "포트폴리오 추천", prompt: "고객 프로필에 맞는 KODEX ETF 포트폴리오를 추천해주세요. 비중과 예상 수익을 포함해주세요." },
+    { icon: "📋", label: "상품 설명 스크립트", prompt: "KODEX 200타겟위클리커버드콜을 고객에게 설명할 PB 스크립트를 만들어주세요. 핵심 셀링 포인트 3가지와 예상 질문 대응도 포함해주세요." },
+    { icon: "⚠️", label: "리스크 고지 체크리스트", prompt: "커버드콜 ETF 판매 시 필수 고지사항 체크리스트를 보여주세요. 불완전판매 방지 항목을 포함해주세요." },
+];
+
+const NORMAL_QUICK_ACTIONS = [
+    { icon: "💰", label: "커버드콜 월수입 계산", prompt: "ISA에서 KODEX 200타겟위클리커버드콜에 5000만원 투자하면 세후 월 수입이 얼마야?" },
+    { icon: "⚔️", label: "경쟁사 ETF 비교", prompt: "KODEX 미국배당커버드콜 vs TIGER 배당커버드콜 비교해줘" },
+    { icon: "📉", label: "금리와 커버드콜", prompt: "금리 인하기에 커버드콜 ETF가 불리하다는데, 왜 그런 거야? 분배율이 실제로 얼마나 떨어질 수 있어?" },
+    { icon: "🏦", label: "절세 계좌 비교", prompt: "연금저축에서 KODEX ETF 사면 세금이 어떻게 되는 거야? ISA랑 비교해서 설명해줘" },
+    { icon: "🔬", label: "반도체 사이클 분석", prompt: "KODEX 반도체에 어떤 종목이 들어있어? 지금 반도체 사이클 어디쯤이야?" },
+    { icon: "🇺🇸", label: "해외 ETF 세금 비교", prompt: "KODEX 미국S&P500이랑 SPY 직접 사는 거랑 세금 차이 비교해줘" },
+    { icon: "📊", label: "장기 적립 시뮬레이션", prompt: "월 100만원씩 KODEX 미국S&P500TR에 연금저축으로 10년 적립하면 얼마가 될까?" },
+    { icon: "⚡", label: "레버리지 함정", prompt: "레버리지 ETF를 장기 보유하면 왜 손해야? 변동성 잠식이 뭔지 예시 들어서 설명해줘" },
+];
+
+function switchMode(mode) {
+    currentMode = mode;
+    document.getElementById('modeNormal').classList.toggle('active', mode === 'normal');
+    document.getElementById('modePB').classList.toggle('active', mode === 'pb');
+    document.body.classList.toggle('pb-mode', mode === 'pb');
+    
+    const profilePanel = document.getElementById('clientProfilePanel');
+    if (profilePanel) profilePanel.style.display = mode === 'pb' ? 'block' : 'none';
+    
+    const sectionTitle = document.querySelector('.chat-section .section-title');
+    const sectionSubtitle = document.querySelector('.chat-section .section-subtitle');
+    if (sectionTitle) sectionTitle.innerHTML = mode === 'pb' 
+        ? 'KODEX AI <span class="gradient-text">셀링 어시스턴트</span>' 
+        : 'KODEX ETF <span class="gradient-text">FunETF AI 챗봇</span>';
+    if (sectionSubtitle) sectionSubtitle.textContent = mode === 'pb'
+        ? '판매사 전용 — 고객 상담 시 실시간 데이터 기반 영업 지원'
+        : 'FunETF AI가 실시간 시장 데이터를 분석하여 답변합니다.';
+    
+    updateQuickActions();
+}
+
+function updateQuickActions() {
+    const container = document.querySelector('.quick-actions');
+    if (!container) return;
+    const actions = currentMode === 'pb' ? PB_QUICK_ACTIONS : NORMAL_QUICK_ACTIONS;
+    container.innerHTML = actions.map(a => 
+        `<button class="quick-btn" onclick="sendQuickMessage('${a.prompt.replace(/'/g, "\\'")}')">${a.icon} ${a.label}</button>`
+    ).join('');
+}
+
+function toggleProfilePanel() {
+    const body = document.getElementById('profileBody');
+    const icon = document.getElementById('profileToggleIcon');
+    if (!body) return;
+    const isHidden = body.style.display === 'none';
+    body.style.display = isHidden ? 'block' : 'none';
+    if (icon) icon.classList.toggle('collapsed', !isHidden);
+}
+
+function getClientProfile() {
+    if (currentMode !== 'pb') return '';
+    const age = document.getElementById('clientAge')?.value;
+    const investType = document.getElementById('clientInvestType')?.value;
+    const accountType = document.getElementById('clientAccountType')?.value;
+    const budget = document.getElementById('clientBudget')?.value;
+    const goal = document.getElementById('clientGoal')?.value;
+    const existing = document.getElementById('clientExistingETF')?.value;
+    
+    if (!age && !investType && !accountType && !budget && !goal) return '';
+    
+    let profile = '\n\n[고객 프로필]\n';
+    if (age) profile += `- 나이: ${age}세\n`;
+    if (investType) profile += `- 투자성향: ${investType}\n`;
+    if (accountType) profile += `- 계좌유형: ${accountType}\n`;
+    if (budget) profile += `- 월 투자금: ${budget}만원\n`;
+    if (goal) profile += `- 투자목적: ${goal}\n`;
+    if (existing) profile += `- 보유 ETF: ${existing}\n`;
+    profile += '이 고객에게 맞는 맞춤형 답변을 해주세요.\n';
+    return profile;
+}
+
 function scrollToChat() {
     document.getElementById('chat-section').scrollIntoView({ behavior: 'smooth' });
     setTimeout(() => chatInput.focus(), 600);
@@ -64,7 +148,7 @@ async function sendMessage() {
         const streamBubble = addMessage('', 'bot', modelInfo);
         const contentEl = streamBubble?.querySelector('.bubble-content');
 
-        const result = await chatbot.generateResponse(text, (chunk, fullText) => {
+        const result = await chatbot.generateResponse(text + getClientProfile(), (chunk, fullText) => {
             if (contentEl) {
                 contentEl.innerHTML = fullText;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
