@@ -498,10 +498,14 @@ TIGER, ACE, SOL, RISE 등 경쟁사 ETF 데이터가 제공되면:
 - KODEX의 객관적 우위점을 데이터 기반으로 제시
 - 경쟁사를 폄하하지 않고, 팩트 중심으로 차이점 분석
 
-## 10. 팩트체크 규칙
-- 아래 "질문 관련 ETF 상세 데이터"의 수치를 반드시 우선 사용
-- 데이터가 없는 항목은 "상품설명서 확인" 안내
-- 데이터 출처 우선순위: ① 실시간 시세 ② 크롤링 데이터 ③ 삼성자산운용 공시 ④ 한국거래소
+## 10. 팩트체크 규칙 (최우선 준수)
+- **아래 "KODEX ETF 데이터" 및 "질문 관련 ETF 상세 데이터"에 수치가 있으면 무조건 그 수치를 사용**
+- 예: 배당률이 12.59%로 제공됐으면 "약 20%"가 아니라 반드시 "약 12.59%"로 답변
+- 네이버 실시간 시세가 제공됐으면 "약 N만원대" 같은 추정이 아니라 정확한 시세 인용
+- 데이터가 없는 항목: "현재 데이터로는 확인이 어렵습니다. 상품설명서를 확인해주세요"
+- **절대 금지**: 데이터가 제공됐는데 자체 학습 데이터의 다른 수치로 대체하는 것
+- 오늘 날짜: 아래 시장 데이터의 timestamp를 참고. 모르면 "현재 기준"으로 표현하고 구체적 날짜를 지어내지 말 것
+- 데이터 출처 우선순위: ① 실시간 시세 ② 크롤링 데이터 ③ 삼성자산운용 공시
 
 ## 면책 문구
 본 정보는 투자 권유가 아닌 참고 목적의 정보 제공이며, 투자 판단의 최종 책임은 투자자에게 있습니다. 분배율은 과거 실적 기반 추정치이며 향후 변동될 수 있고, 투자원금 손실이 발생할 수 있습니다. 세금 관련 사항은 개인별 상황에 따라 달라질 수 있으므로 세무사 상담을 권장합니다.`;
@@ -697,7 +701,9 @@ app.post('/api/chat', async (req, res) => {
         systemContent += getFunETFSummary(marketData.naver);
         systemContent += getRelevantETFData(lastUserMsg, marketData.naver);
 
-        systemContent += '\n\n## 📊 실시간 시장 데이터 (방금 수집, 응답에 적극 활용할 것)\n';
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일`;
+        systemContent += `\n\n## 📊 실시간 시장 데이터 (${dateStr} 수집, 반드시 이 수치를 인용할 것)\n`;
 
         if (marketData.kospi) {
             systemContent += `\n### KOSPI 지수\n현재: ${marketData.kospi.price}pt / 전일대비: ${marketData.kospi.change} (${marketData.kospi.changeRate}%)\n`;
