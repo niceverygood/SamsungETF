@@ -1463,6 +1463,44 @@ body.pb-mode .header-badge-pb {
   }
 }
 
+  .mode-toggle {
+    gap: 2px;
+    padding: 2px;
+  }
+
+  .mode-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .model-select-bar {
+    gap: 6px;
+  }
+
+  .model-btn {
+    padding: 7px 10px;
+    font-size: 12px;
+  }
+
+  body.pb-mode .chat-section {
+    padding-top: 80px;
+  }
+
+  .pb-ment {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .result-card-header {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .result-card-body {
+    padding: 12px 14px;
+  }
+}
+
 @media (max-width: 480px) {
   .hero-title {
     font-size: 28px;
@@ -1474,5 +1512,13 @@ body.pb-mode .header-badge-pb {
 
   .chat-container {
     height: 550px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions {
+    flex-wrap: wrap;
   }
 }

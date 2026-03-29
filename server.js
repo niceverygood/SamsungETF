@@ -9,7 +9,7 @@ const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '.')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // ===== OpenRouter API Key (환경 변수에서 로드) =====
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;

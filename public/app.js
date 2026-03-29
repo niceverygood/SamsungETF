@@ -188,14 +188,12 @@ function addMessage(content, type, modelUsed) {
 
     let modelBadgeHtml = '';
     if (type === 'bot' && modelUsed) {
-        const colors = MODEL_COLORS[modelUsed.key] || MODEL_COLORS.claude;
-        const routeLabel = modelUsed.wasAutoRouted ? '자동 선택' : '';
-        modelBadgeHtml = `
-        <div class="model-badge" style="background: ${colors.bg}; border-color: ${colors.border};">
-            <span class="model-badge-icon">${modelUsed.icon}</span>
-            <span class="model-badge-name" style="color: ${colors.text};">${modelUsed.name}</span>
-            ${routeLabel ? `<span class="model-badge-route">${routeLabel}</span>` : ''}
-        </div>`;
+        if (currentMode === 'pb') {
+            modelBadgeHtml = `<div class="model-badge" style="background: rgba(15,111,222,0.15); border-color: rgba(15,111,222,0.4);"><span class="model-badge-icon">🏦</span><span class="model-badge-name" style="color: #60A5FA;">PB 셀링 어시스턴트</span></div>`;
+        } else {
+            const colors = MODEL_COLORS[modelUsed.key] || MODEL_COLORS.claude;
+            modelBadgeHtml = `<div class="model-badge" style="background: ${colors.bg}; border-color: ${colors.border};"><span class="model-badge-icon">${modelUsed.icon}</span><span class="model-badge-name" style="color: ${colors.text};">${modelUsed.name}</span></div>`;
+        }
     }
 
     messageDiv.innerHTML = `
